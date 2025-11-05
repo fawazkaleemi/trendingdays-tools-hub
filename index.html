@@ -89,64 +89,73 @@
     .social-icons svg:hover{fill:var(--accent);}
     @media(max-width:700px){.tabs{flex-direction:column;} .tab{text-align:center;width:100%;}}
 
-/* ===== TRENDINGDAYS HEADER (CLEAN VERSION) ===== */
-.td-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* ===== CLASSIC CENTERED HEADER (like offline version) ===== */
+header {
   background: var(--primary);
-  color: #fff;
-  padding: 12px 24px;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: white;
+  text-align: center;
+  padding: 14px 0 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.td-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.td-logo {
-  height: 52px;
-  width: auto;
-  border-radius: 10px;
-}
-
-.td-brand-text {
+.header-top {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  align-items: center;
+  justify-content: center;
 }
 
-.td-title {
+.logo {
+  height: 70px;
+  width: auto;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+.brand-text h1 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
 }
 
-.td-tagline {
-  font-size: 0.85rem;
+.brand-tagline {
   color: var(--accent);
+  font-size: 0.9rem;
   margin-top: 2px;
+  display: block;
 }
 
-.td-nav a {
-  color: #fff;
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  margin: 0 12px;
   text-decoration: none;
-  margin-left: 14px;
   font-weight: 500;
-  transition: color .2s;
+  transition: 0.3s;
 }
-.td-nav a:hover { color: var(--accent); }
 
-/* Mobile view */
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Responsive fix for small screens */
 @media (max-width: 700px) {
-  .td-header { flex-direction: column; text-align: center; }
-  .td-brand { flex-direction: column; gap: 4px; }
-  .td-logo { height: 44px; }
-  .td-title { font-size: 1.2rem; }
-  .td-nav a { margin: 0 8px; }
+  .logo {
+    height: 56px;
+  }
+  .brand-text h1 {
+    font-size: 1.3rem;
+  }
+  .brand-tagline {
+    font-size: 0.8rem;
+  }
+  nav a {
+    margin: 0 6px;
+    display: inline-block;
+  }
 }
 
 
@@ -248,16 +257,15 @@ header {
   [Your HilltopAds code here]
 </div>
 
-<header class="td-header">
-  <div class="td-brand">
-    <img src="./assets/logo.png" alt="TrendingDays Tools Hub Logo" class="td-logo">
-    <div class="td-brand-text">
-      <h1 class="td-title">TrendingDays Tools Hub</h1>
-      <span class="td-tagline">Smart Multi-Tool Hub</span>
+<header>
+  <div class="header-top">
+    <img src="./assets/logo.png" alt="TrendingDays Tools Hub Logo" class="logo">
+    <div class="brand-text">
+      <h1>TrendingDays Tools Hub</h1>
+      <span class="brand-tagline">Smart Multi-Tool Hub</span>
     </div>
   </div>
-
-  <nav class="td-nav">
+  <nav>
     <a href="#" onclick="showPage('home')">Home</a>
     <a href="#" onclick="showPage('about')">About Us</a>
     <a href="#" onclick="showPage('contact')">Contact Us</a>
@@ -786,6 +794,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
