@@ -158,6 +158,54 @@ nav a:hover {
   }
 }
 
+    /* === FINAL HEADER FIX (centers nav below logo block) === */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  nav a {
+    margin: 0 8px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
+.side-ad,
+.ads-placeholder {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
+
 
 /* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
 .side-ad,
@@ -794,6 +842,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
