@@ -89,42 +89,44 @@
     .social-icons svg:hover{fill:var(--accent);}
     @media(max-width:700px){.tabs{flex-direction:column;} .tab{text-align:center;width:100%;}}
 
-/* ===== CLEAN HEADER: Logo left + stacked text block ===== */
+/* ===== FINAL POLISHED HEADER ===== */
 header {
   background: var(--primary);
   color: white;
-  padding: 16px 20px;
+  padding: 14px 30px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-/* Main header layout */
+/* Align logo + text center vertically */
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center; /* centers the whole block horizontally */
+  gap: 30px;
   flex-wrap: wrap;
-  gap: 20px;
 }
 
-/* Bigger logo */
+/* Larger, balanced logo */
 .logo {
-  height: 100px;
+  height: 110px;
   width: auto;
-  border-radius: 12px;
+  border-radius: 14px;
+  object-fit: contain;
 }
 
-/* Title + tagline + nav stacked neatly */
+/* Text block beside logo */
 .brand-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  text-align: left;
 }
 
 /* Title */
 .brand-content h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -132,43 +134,44 @@ header {
 /* Tagline */
 .brand-tagline {
   color: var(--accent);
-  font-size: 1rem;
-  margin-top: 4px;
-  margin-bottom: 6px;
+  font-size: 1.05rem;
+  margin: 3px 0 10px 0;
 }
 
-/* Navigation */
+/* Navigation links */
 nav a {
   color: white;
-  margin-right: 14px;
+  margin-right: 18px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: 0.3s;
-  font-size: 1rem;
+  font-size: 1.05rem;
 }
 
 nav a:hover {
   color: var(--accent);
 }
 
-/* Responsive: stack vertically on mobile */
-@media (max-width: 700px) {
+/* ===== Responsive behavior ===== */
+@media (max-width: 800px) {
   .header-container {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
     text-align: center;
   }
 
   .brand-content {
     align-items: center;
+    text-align: center;
   }
 
   .logo {
-    height: 80px;
+    height: 90px;
   }
 
   .brand-content h1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
   }
 
   .brand-tagline {
@@ -176,11 +179,10 @@ nav a:hover {
   }
 
   nav a {
-    margin: 0 8px;
+    margin: 0 10px;
     font-size: 0.95rem;
   }
 }
-
 
 /* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
 .side-ad,
@@ -826,6 +828,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
