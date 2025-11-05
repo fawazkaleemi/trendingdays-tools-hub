@@ -215,7 +215,7 @@ header {
   opacity: 0;
 }
 
-/* ===== HEADER BRAND STYLING ===== */
+/* ===== HEADER (FIXED + CENTERED ALIGNMENT) ===== */
 header {
   display: flex;
   justify-content: space-between;
@@ -224,12 +224,14 @@ header {
   color: white;
   padding: 10px 20px;
   flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Left section (logo + title + tagline) */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .logo {
@@ -242,6 +244,7 @@ header {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 .brand-tagline {
@@ -251,7 +254,8 @@ header {
   margin-top: 2px;
 }
 
-nav a {
+/* Right section (nav links) */
+.header-right a {
   color: white;
   margin: 0 10px;
   text-decoration: none;
@@ -259,7 +263,7 @@ nav a {
   transition: 0.3s;
 }
 
-nav a:hover {
+.header-right a:hover {
   color: var(--accent);
 }
 
@@ -267,7 +271,6 @@ nav a:hover {
 @media (max-width: 700px) {
   header {
     flex-direction: column;
-    align-items: center;
     text-align: center;
   }
   .header-left {
@@ -277,10 +280,13 @@ nav a:hover {
   .brand-text h1 {
     font-size: 1.2rem;
   }
+  .brand-tagline {
+    font-size: 0.8rem;
+  }
   .logo {
     height: 48px;
   }
-  nav {
+  .header-right {
     margin-top: 8px;
   }
 }
@@ -308,12 +314,13 @@ nav a:hover {
     </div>
   </div>
 
-  <nav>
+  <nav class="header-right">
     <a href="#" onclick="showPage('home')">Home</a>
     <a href="#" onclick="showPage('about')">About Us</a>
     <a href="#" onclick="showPage('contact')">Contact Us</a>
   </nav>
 </header>
+
 
 
   <div class="container" id="mainContainer">
@@ -837,6 +844,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
