@@ -89,108 +89,80 @@
     .social-icons svg:hover{fill:var(--accent);}
     @media(max-width:700px){.tabs{flex-direction:column;} .tab{text-align:center;width:100%;}}
 
-/* ===== FINAL POLISHED HEADER ===== */
 header {
+  display: flex;
+  align-items: center;           /* Vertically center all content */
+  justify-content: center;       /* Centers the block horizontally */
+  padding: 14px 30px;
   background: var(--primary);
   color: white;
-  padding: 14px 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* Align logo + text center vertically */
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* centers the whole block horizontally */
-  gap: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  gap: 40px;                     /* Space between logo and text */
   flex-wrap: wrap;
 }
 
-/* Larger, balanced logo */
-.logo {
-  height: 110px;
+.header-left .logo {
+  height: 120px;                /* Larger logo */
   width: auto;
   border-radius: 14px;
   object-fit: contain;
 }
 
-/* Text block beside logo */
-.brand-content {
+.header-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
+  gap: 8px;
 }
 
-/* Title */
-.brand-content h1 {
+.header-right h1 {
   margin: 0;
-  font-size: 1.9rem;
+  font-size: 2rem;
   font-weight: 700;
-  line-height: 1.2;
 }
 
-/* Tagline */
 .brand-tagline {
   color: var(--accent);
-  font-size: 1.05rem;
-  margin: 3px 0 10px 0;
-}
-
-/* Navigation links */
-nav a {
-  color: white;
-  margin-right: 18px;
-  text-decoration: none;
+  font-size: 1.1rem;
   font-weight: 600;
-  transition: 0.3s;
-  font-size: 1.05rem;
 }
 
-nav a:hover {
+.header-right nav {
+  display: flex;
+  gap: 20px;
+}
+
+.header-right nav a {
+  color: white;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.header-right nav a:hover {
   color: var(--accent);
 }
 
-/* ===== Responsive behavior ===== */
+/* Responsive adjustments */
 @media (max-width: 800px) {
-  .header-container {
+  header {
     flex-direction: column;
-    align-items: center;
-    gap: 12px;
     text-align: center;
   }
-
-  .brand-content {
-    align-items: center;
-    text-align: center;
-  }
-
-  .logo {
+  .header-left .logo {
     height: 90px;
   }
-
-  .brand-content h1 {
-    font-size: 1.5rem;
+  .header-right {
+    align-items: center;
   }
-
-  .brand-tagline {
-    font-size: 0.9rem;
-  }
-
-  nav a {
-    margin: 0 10px;
-    font-size: 0.95rem;
+  .header-right nav {
+    justify-content: center;
   }
 }
 
-/* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
-.side-ad,
-.ads-placeholder {
-  display: none !important;
-  visibility: hidden;
-  opacity: 0;
-}
 
 
 /* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
@@ -292,17 +264,17 @@ header {
 </div>
 
 <header>
-  <div class="header-container">
+  <div class="header-left">
     <img src="./assets/logo.png" alt="TrendingDays Tools Hub Logo" class="logo">
-    <div class="brand-content">
-      <h1>TrendingDays Tools Hub</h1>
-      <span class="brand-tagline">Smart Multi-Tool Hub</span>
-      <nav>
-        <a href="#" onclick="showPage('home')">Home</a>
-        <a href="#" onclick="showPage('about')">About Us</a>
-        <a href="#" onclick="showPage('contact')">Contact Us</a>
-      </nav>
-    </div>
+  </div>
+  <div class="header-right">
+    <h1>TrendingDays Tools Hub</h1>
+    <span class="brand-tagline">Smart Multi-Tool Hub</span>
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About Us</a>
+      <a href="#" onclick="showPage('contact')">Contact Us</a>
+    </nav>
   </div>
 </header>
 
@@ -828,6 +800,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
