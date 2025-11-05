@@ -215,6 +215,76 @@ header {
   opacity: 0;
 }
 
+/* ===== HEADER BRAND STYLING ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  height: 56px;
+  width: auto;
+  border-radius: 12px;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.brand-tagline {
+  font-size: 0.85rem;
+  color: var(--accent);
+  display: block;
+  margin-top: 2px;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* ===== Responsive header for mobile ===== */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+  }
+  .brand-text h1 {
+    font-size: 1.2rem;
+  }
+  .logo {
+    height: 48px;
+  }
+  nav {
+    margin-top: 8px;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -229,25 +299,22 @@ header {
   [Your HilltopAds code here]
 </div>
 
-  <header>
+<header>
   <div class="header-left">
-    <img src="/trendingdays-tools-hub/assets/logo.png"
-     alt="TrendingDays Tools Hub Logo"
-     class="logo"
-     width="180" height="180"
-     decoding="async" loading="eager">
+    <img src="./assets/logo.png" alt="TrendingDays Tools Hub Logo" class="logo">
+    <div class="brand-text">
+      <h1>TrendingDays Tools Hub</h1>
+      <span class="brand-tagline">Smart Multi-Tool Hub</span>
+    </div>
   </div>
 
-  <div class="header-center">
-    <h1>TrendingDays Tools Hub</h1>
-    <nav>
-  <a href="#" onclick="showPage('home')">Home</a>
-  <a href="#" onclick="showPage('about')">About Us</a>
-  <a href="#" onclick="showPage('contact')">Contact Us</a>
-</nav>
+  <nav>
+    <a href="#" onclick="showPage('home')">Home</a>
+    <a href="#" onclick="showPage('about')">About Us</a>
+    <a href="#" onclick="showPage('contact')">Contact Us</a>
+  </nav>
+</header>
 
-  </div>
-  </header>
 
   <div class="container" id="mainContainer">
 
@@ -770,5 +837,6 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
