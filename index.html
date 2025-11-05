@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TrendingDays Tools Hub – Free Online Calculators & Converters for age, BMI, loans, tips, units, percentages, discounts, math, countdowns, and pace.">
+  <title>TrendingDays Tools Hub – Free Online Calculators & Converters</title>
+
+<meta property="og:image" content="/assets/logo.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="300">
+<meta property="og:image:height" content="300">
+<meta property="og:title" content="TrendingDays Tools Hub – Free Online Calculators & Converters">
+<meta property="og:description" content="A free hub of calculators, converters, and tools to make everyday tasks simple. Built by TrendingDays Tools Hub.">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TrendingDays Tools Hub">
+
+<!-- ✅ Favicons for all devices -->
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<meta name="theme-color" content="#2b3e8e">
+
+  <style>
+
+.side-ad {
+  position: fixed;
+  top: 120px; /* below the header */
+  width: 160px;
+  height: 600px;
+  background: #f4f4f4;
+  border: 1px dashed #ccc;
+  text-align: center;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+/* Adjust these offsets to control distance from your main 980px container */
+.left-ad  { left: calc(50% - 700px); }   /* 980/2 + 150px gap ≈ 640px */
+.right-ad { right: calc(50% - 700px); }
+
+@media (max-width: 1100px) {
+  .side-ad { display: none; }
+}
+
+
+    :root {
+      --primary:#2b3e8e;
+      --accent:#ffd700;
+      --bg:linear-gradient(135deg,#e9f0ff,#f9fbff);
+      --text:#333;
+    }
+    body{margin:0;font-family:'Segoe UI',Tahoma,sans-serif;background:var(--bg);color:var(--text);display:flex;flex-direction:column;min-height:100vh;}
+    header,footer{background:var(--primary);color:white;text-align:center;padding:10px 0;}
+    nav a{color:white;margin:0 8px;text-decoration:none;transition:0.3s;}
+    nav a:hover{color:var(--accent);}
+    .container{flex:1;max-width:980px;margin:auto;padding:20px;}
+    .tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px;}
+    .tab{background:#dce2f2;padding:8px 18px;border-radius:6px;cursor:pointer;transition:0.3s;}
+    .tab:hover,.tab.active{background:var(--primary);color:white;transform:translateY(-2px);}
+    .tool-card{display:none;background:white;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);padding:25px;animation:fadeIn 0.4s ease;}
+    .tool-card.active{display:block;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    label{display:block;font-weight:600;margin-top:8px;}
+    input,select{width:100%;padding:10px;border:1px solid #ccc;border-radius:6px;margin:5px 0 10px;font-size:1rem;}
+    input:focus,select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 3px rgba(43,62,142,0.4);}
+    button{background:var(--primary);color:white;padding:10px 15px;border:none;border-radius:6px;cursor:pointer;transition:background 0.3s,transform 0.2s;}
+    button:hover{background:#243673;transform:translateY(-1px);}
+    .swap-btn{background:var(--accent);color:#333;font-weight:700;margin-right:5px;}
+    .result{background:#f4f6fc;padding:10px;margin-top:10px;border-radius:6px;font-weight:500;}
+    .share-buttons button{background:#eee;color:#333;margin-top:8px;}
+    .share-buttons button:hover{background:var(--primary);color:white;}
+    .ads-placeholder{background:#f4f4f4;border:1px dashed #ccc;text-align:center;padding:10px;margin:10px 0;}
+    .guidance{margin-top:20px;padding:15px;background:#f7faff;border-radius:6px;}
+    .guidance h3{margin-top:0;color:var(--primary);}
+    footer{display:flex;flex-direction:column;align-items:center;font-size:0.9rem;}
+    .social-icons svg{width:22px;fill:white;margin:5px;transition:0.3s;}
+    .social-icons svg:hover{fill:var(--accent);}
+    @media(max-width:700px){.tabs{flex-direction:column;} .tab{text-align:center;width:100%;}}
+
+/* ===== HEADER LAYOUT (ADD THIS BELOW EVERYTHING) ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary);
+  color: white;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.header-center {
+  flex: 1;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+nav {
+  margin-top: 5px;
+}
+
+nav a {
+  color: white;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.logo {
+  height: 60px;
+  width: auto;
+  border-radius: 12px;
+}
+
+/* ===== FOOTER LINKS FIX ===== */
+footer a {
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer a:hover {
+  color: var(--accent); /* that nice gold highlight */
+  text-decoration: underline;
+}
+
+.footer-links {
+  margin-bottom: 8px;
+}
+
+/* ===== Responsive Behavior ===== */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header-center {
+    text-align: center;
+  }
+  .logo {
+    height: 44px;
+    margin-bottom: 6px;
+  }
+}
+
+/* ===== Header Alignment Fix ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centers header content visually */
+  position: relative; /* allows absolute logo positioning */
+}
+
+.header-left {
+  position: absolute;
+  left: 20px; /* keeps logo pinned on left */
+}
+
+.header-center {
+  text-align: center;
+}
+
+.header-center h1 {
+  margin-bottom: 5px;
+}
+
+/* make sure nav stays below the title cleanly */
+.header-center nav {
+  display: inline-block;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .header-left {
+    position: static;
+    margin-bottom: 6px;
+  }
+}
+
+/* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
+.side-ad,
+.ads-placeholder {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Left Side Ad -->
+<div class="side-ad left-ad">
+  [Your HilltopAds code here]
+</div>
+
+<!-- Right Side Ad -->
+<div class="side-ad right-ad">
+  [Your HilltopAds code here]
+</div>
+
+  <header>
+  <div class="header-left">
+    <img src="/assets/logo.png" alt="TrendingDays Tools Hub Logo" class="logo">
+  </div>
+
+  <div class="header-center">
+    <h1>TrendingDays Tools Hub</h1>
+    <nav>
+  <a href="#" onclick="showPage('home')">Home</a>
+  <a href="#" onclick="showPage('about')">About Us</a>
+  <a href="#" onclick="showPage('contact')">Contact Us</a>
+</nav>
+
+  </div>
+  </header>
+
+  <div class="container" id="mainContainer">
+
+    <div id="homePage">
+      <div class="tabs" id="tabContainer"></div>
+      <div class="ads-placeholder">[Your Ad Placeholder]</div>
+
+      <div id="toolsContainer"></div>
+    </div>
+
+    <div id="aboutPage" style="display:none;">
+  <h2>About TrendingDays Tools Hub</h2>
+  <p><strong>TrendingDays Tools Hub</strong> is a free online platform that brings together a wide range of calculators, converters, and everyday tools — all designed to make your digital life simpler and smarter.</p>
+
+  <h3>Our Story</h3>
+  <p>We started TrendingDays Tools Hub with one goal in mind: to create a single, reliable place where users can access accurate and fast calculators for everyday needs. Whether it’s calculating your BMI, converting units, or checking your loan payments, our tools are built to deliver instant results right in your browser — no downloads, no sign-ups, no clutter.</p>
+
+  <h3>What Makes Us Different</h3>
+  <p>While most sites overload visitors with pop-ups or distracting ads, we keep things clean and minimal. Our platform is ad-light — meaning we show only essential ads that support our work while ensuring a smooth, distraction-free user experience. Every calculator and converter is tested to ensure accuracy, quick performance, and mobile responsiveness across all devices.</p>
+
+  <h3>Who We Serve</h3>
+  <p>Our audience includes students, professionals, small business owners, and everyday users who want quick answers without wasting time. From financial and mathematical calculators to health and lifestyle utilities, TrendingDays Tools Hub is your one-stop solution for everyday online calculations and conversions.</p>
+
+  <p>We’re continuously expanding our toolset and improving usability — so that every visit helps you calculate smarter, faster, and better.</p>
+</div>
+
+
+
+    <div id="contactPage" style="display:none;">
+     <h2>Contact Us</h2>
+<p>We’d love to hear from you! Whether you have feedback, questions, or new ideas, our team at <strong>TrendingDays Tools Hub</strong> is always ready to help. Every message we receive helps us make our online calculators and converters more accurate, faster, and easier to use for everyone.</p>
+
+<p>If you’ve noticed a bug, want to suggest a new feature, or simply wish to share how you use our tools, don’t hesitate to reach out. We personally read and respond to all messages, so your feedback never goes unheard.</p>
+
+<p><strong>Email:</strong> <a href="mailto:editor@trendingdays.com">editor@trendingdays.com</a></p>
+
+<p>We also welcome collaboration and partnership inquiries from educators, developers, and creators who believe in our mission to make digital tools free, reliable, and accessible worldwide.</p>
+
+<p>Thank you for being part of the <strong>TrendingDays Tools Hub</strong> community. Your continued trust and support inspire us to keep building smarter, faster, and ad-light tools for everyone.</p>
+
+<p>We aim to make <strong>TrendingDays Tools Hub</strong> your go-to space for free, accurate, and easy-to-use online calculators — and your suggestions make that possible.</p>
+    </div>
+
+<!-- PRIVACY POLICY PAGE -->
+<div id="privacyPage" style="display:none;">
+  <h2>Privacy Policy</h2>
+  <p>At <strong>TrendingDays Tools Hub</strong>, your privacy and trust are our top priorities. We are committed to protecting your data and ensuring that every calculation or conversion you perform remains completely private and secure.</p>
+
+  <h3>Information We Collect</h3>
+  <p>We do not collect, store, or sell any personal information. All calculations happen directly in your browser — meaning your data never leaves your device. We do not track or record user inputs or tool results.</p>
+
+  <h3>Cookies & Analytics</h3>
+  <p>We may use cookies to maintain essential website functionality or to show limited, non-intrusive ads. Anonymous analytics may be used to improve site performance, but these do not identify individual users.</p>
+
+  <h3>Third-Party Advertisements</h3>
+  <p>To keep our tools free, we may display ads from trusted ad networks. These providers might use cookies to serve relevant ads in compliance with Google Ads and GDPR standards.</p>
+
+  <h3>External Links</h3>
+  <p>Our website may contain links to other websites. We are not responsible for the privacy policies or practices of these external sites.</p>
+
+  <h3>Contact Us</h3>
+  <p>If you have any questions about this policy, please contact us at <a href="mailto:editor@trendingdays.com">editor@trendingdays.com</a>.</p>
+
+<p>We regularly review and update our Privacy Policy to reflect changes in technology, regulations, or how we operate. By continuing to use <strong>TrendingDays Tools Hub</strong>, you agree to this policy and our commitment to maintaining your privacy and data protection.</p>
+
+</div>
+
+
+<!-- TERMS OF USE PAGE -->
+<div id="termsPage" style="display:none;">
+  <h2>Terms of Use</h2>
+  <p>Welcome to <strong>TrendingDays Tools Hub</strong>. By accessing or using our website, you agree to the following terms and conditions. Please read them carefully before using our tools or services.</p>
+
+  <h3>Use of Our Website</h3>
+  <p>All calculators and converters on this site are provided for general informational and educational purposes only. You agree to use them responsibly and not for any unlawful or harmful activity.</p>
+
+  <h3>Accuracy of Results</h3>
+  <p>While we make every effort to ensure accuracy, results generated by our tools may vary due to rounding, user input, or data variations. Always double-check important results before making decisions based on them.</p>
+
+  <h3>Intellectual Property</h3>
+  <p>All content, source code, and design elements on <strong>TrendingDays Tools Hub</strong> are the property of the site owners. You may not copy, modify, or redistribute any part of our content without permission.</p>
+
+  <h3>Limitation of Liability</h3>
+  <p><strong>TrendingDays Tools Hub</strong> is not responsible for any damages or losses resulting from the use of our calculators, converters, or related content. Use them at your own discretion.</p>
+
+  <h3>Updates to Terms</h3>
+  <p>We may update these terms periodically to improve user experience or meet new legal standards. Continued use of our site after changes means you accept the revised terms.</p>
+
+  <p>For questions, please contact us at <a href="mailto:editor@trendingdays.com">editor@trendingdays.com</a>.</p>
+
+<p>By using <strong>TrendingDays Tools Hub</strong>, you acknowledge that our tools are intended for convenience and educational use only. We encourage users to verify results independently, especially for professional, financial, or health-related decisions.</p>
+
+</div>
+
+<!-- DISCLAIMER PAGE -->
+<div id="disclaimerPage" style="display:none;">
+  <h2>Disclaimer</h2>
+  <p>The calculators and converters available on <strong>TrendingDays Tools Hub</strong> are provided for general informational and educational purposes only. While we make every effort to ensure accuracy and reliability, the results generated by our tools are not guaranteed to be error-free or suitable for professional use.</p>
+
+  <h3>No Professional Advice</h3>
+  <p>The information on this site should not be considered professional, financial, legal, or medical advice. Always seek guidance from qualified professionals before making decisions based on the results of any calculator or converter.</p>
+
+  <h3>Limitation of Liability</h3>
+  <p><strong>TrendingDays Tools Hub</strong> and its creators are not responsible for any direct or indirect losses, damages, or consequences resulting from the use of our tools, data, or website content. All usage is at your own risk.</p>
+
+  <h3>External Links</h3>
+  <p>Our website may contain external links for reference or convenience. We are not responsible for the accuracy, content, or policies of third-party websites.</p>
+
+  <p>By using <strong>TrendingDays Tools Hub</strong>, you agree to this disclaimer and accept that our tools are designed to assist with quick, everyday calculations — not to replace expert evaluation. We recommend using our results as a reference point only.</p>
+
+  <p>We continually work to improve accuracy and usability, but all users are encouraged to verify their results when using our tools for professional or personal decision-making. Your understanding and responsible use help keep our platform transparent and helpful for everyone.</p>
+</div>
+
+
+<!-- SUPPORT US PAGE -->
+<div id="supportPage" style="display:none;">
+  <h2>Support Our Work ☕</h2>
+  <p><strong>TrendingDays Tools Hub</strong> is a labor of love — built and maintained by a small, independent team that believes in free, fast, and accurate online calculators for everyone. Each tool is coded, tested, and refined by hand to keep your experience simple, reliable, and ad-light.</p>
+
+  <h3>Why Your Support Matters</h3>
+  <p>We don’t charge users or lock features behind subscriptions. Your contribution helps cover hosting, domain renewals, performance monitoring, and the time it takes to build new calculators, improve accuracy, and add helpful guides that make everyday tasks easier.</p>
+
+  <h3>Ways You Can Support Us</h3>
+  <ul>
+    <li>☕ <strong>Buy us a coffee</strong> to fuel development</li>
+    <li>🔗 Share <strong>TrendingDays Tools Hub</strong> with friends, students, or colleagues</li>
+    <li>💡 Send ideas or bug reports — we love community feedback</li>
+  </ul>
+
+  <p>Every bit of support keeps the project sustainable and free for everyone. Thank you for believing in our mission to deliver clean, fast, and trustworthy tools that respect your time and privacy.</p>
+
+  <a href="https://www.buymeacoffee.com/trendingdays" target="_blank" style="display:inline-block;background:#ffd700;color:#333;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:600;">☕ Buy Us a Coffee</a>
+</div>
+
+
+  </div>
+
+  <footer>
+  <div class="footer-links">
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a> |
+    <a href="#" onclick="showPage('terms')">Terms of Use</a> |
+    <a href="#" onclick="showPage('disclaimer')">Disclaimer</a> |
+    <a href="#" onclick="showPage('support')">Support Us ☕</a>
+  </div>
+  <p>© 2025 TrendingDays Tools Hub – Free Online Calculators & Converters</p>
+</footer>
+
+  <script>
+    const tools = [
+      {id:'age',name:'Age Calculator'}, {id:'bmi',name:'BMI Calculator'},
+      {id:'loan',name:'Loan Calculator'}, {id:'tip',name:'Tip Calculator'},
+      {id:'unit',name:'Unit Converter'}, {id:'percent',name:'Percentage Calculator'},
+      {id:'discount',name:'Discount Calculator'}, {id:'math',name:'Simple Math Tools'},
+      {id:'date',name:'Date Difference / Countdown'}, {id:'pace',name:'Speed / Pace Calculator'}
+    ];
+    let reversed=false;
+
+    // Build tabs dynamically
+    const tabContainer=document.getElementById('tabContainer');
+    const toolsContainer=document.getElementById('toolsContainer');
+    tools.forEach((tool,i)=>{
+      const tab=document.createElement('div');
+      tab.textContent=tool.name;
+      tab.className='tab'+(i===0?' active':'');
+      tab.dataset.target=tool.id;
+      tab.onclick=()=>showTool(tool.id);
+      tabContainer.appendChild(tab);
+    });
+
+    // Build placeholders
+    const guidanceContent={
+      age: `
+  <h3>About the Age Calculator</h3>
+  <p>The <strong>Age Calculator</strong> helps you find your exact age in years, months, and days instantly. 
+  It’s a free, browser-based calculator built by <strong>TrendingDays Tools Hub</strong> to give accurate age results for birthdays, anniversaries, and important milestones. 
+  Whether you’re calculating your age for official forms, job applications, or just personal curiosity, this tool ensures accuracy without the need for sign-ups or downloads.</p>
+
+  <h3>How to Use</h3>
+  <p>Simply select your birth date using the date picker and click on <em>Calculate</em>. 
+  The tool instantly displays your current age in years, months, and days based on today’s date. 
+  It works on both mobile and desktop browsers and does not store or transmit any data — everything runs securely within your device.</p>
+
+  <h3>FAQs</h3>
+  <ul>
+    <li><strong>Can I use it for any date?</strong> Yes, the calculator works for all valid past dates.</li>
+    <li><strong>Is my data safe?</strong> 100% — all calculations happen locally in your browser.</li>
+    <li><strong>What is it used for?</strong> Age verification, school or job applications, travel forms, and personal records.</li>
+  </ul>
+`,
+
+      bmi: `<h3>About the BMI Calculator</h3>
+<p>The Body Mass Index (BMI) Calculator by <strong>TrendingDays Tools Hub</strong> helps you measure body fat levels based on your height and weight. It’s a free, browser-based tool that instantly computes your BMI value and category — whether underweight, normal, overweight, or obese — using the standard WHO formula. Ideal for fitness tracking, health assessments, and everyday awareness, this calculator works offline in your browser without collecting or storing any personal data.</p>
+
+<h3>How to Use</h3>
+<p>Enter your weight in kilograms and your height in centimeters, then click <strong>Calculate</strong>. The tool will instantly display your BMI score along with a category classification. You can adjust your numbers anytime to track progress or test different scenarios. It’s designed for mobile and desktop use, ensuring quick, accurate results wherever you are.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>What does BMI measure?</strong> It measures body fat proportion using height and weight.</li>
+<li><strong>Is it accurate?</strong> It’s reliable for most adults but may not reflect muscle mass or bone density.</li>
+<li><strong>Is my data stored?</strong> No — all calculations happen locally on your device for privacy.</li>
+</ul>`,
+
+loan: `<h3>About the Loan Calculator</h3>
+<p>The <strong>Loan Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps you estimate monthly payments, total interest, and overall repayment cost for personal, home, or car loans. It’s designed to provide instant financial clarity so you can plan smarter before borrowing. By using simple input fields and automatic calculations, this tool ensures transparency and accuracy without needing any login, registration, or data tracking.</p>
+
+<h3>How to Use</h3>
+<p>Enter the loan principal (total borrowed amount), annual interest rate, and repayment term in years. Then click <strong>Calculate</strong>. The tool instantly displays your monthly payment, total amount payable, and total interest cost. You can tweak the numbers anytime to compare different loan options, interest rates, or durations to find the most budget-friendly plan.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I use this for home or car loans?</strong> Yes, it works for any loan type with fixed interest.</li>
+<li><strong>Does it support compound interest?</strong> Yes — it uses a standard monthly compounding formula.</li>
+<li><strong>Is my information saved?</strong> No, all calculations run locally in your browser for complete privacy.</li>
+</ul>`,
+
+
+tip: `<h3>About the Tip Calculator</h3>
+<p>The <strong>Tip Calculator</strong> from <strong>TrendingDays Tools Hub</strong> helps you quickly calculate the right amount to tip after a meal or service. Whether you’re dining out, ordering food, or splitting a group bill, this tool ensures fair and accurate tipping without the math struggle. It’s free, mobile-friendly, and runs instantly in your browser — no app download or sign-up required.</p>
+
+<h3>How to Use</h3>
+<p>Enter your total bill amount, desired tip percentage, and the number of people sharing the bill. Click <strong>Calculate</strong>, and the tool will show the total amount including tip and the cost per person. You can adjust the values anytime to test different tipping percentages or group sizes for quick comparisons.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I split the bill?</strong> Yes — simply enter the number of people, and it will divide the total evenly.</li>
+<li><strong>Does it work for any currency?</strong> Absolutely — it works with any number format or currency symbol.</li>
+<li><strong>Is my data stored?</strong> No, all calculations are done locally in your browser for full privacy.</li>
+</ul>`,
+
+      unit: `<h3>About the Unit Converter</h3>
+<p>The <strong>Unit Converter</strong> by <strong>TrendingDays Tools Hub</strong> allows you to quickly convert values between different measurement systems — including length, weight, temperature, volume, and speed. Whether you’re a student, engineer, traveler, or fitness enthusiast, this all-in-one converter provides accurate, instant conversions without complicated settings or ads. It’s lightweight, fast, and runs entirely in your browser.</p>
+
+<h3>How to Use</h3>
+<p>Select the type of conversion you want (e.g., length, weight, or temperature) from the dropdown list. Enter your value, and click <strong>Convert</strong>. You can also use the <strong>Swap</strong> button to switch between units (like km ↔ miles or °C ↔ °F). The result appears instantly below, ensuring fast and reliable results every time.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>What conversions are supported?</strong> Length, weight, temperature, volume, and speed conversions are all available.</li>
+<li><strong>Is it suitable for scientific use?</strong> Yes — it’s accurate for general, educational, and professional purposes.</li>
+<li><strong>Do I need internet?</strong> Nope — it works offline since all calculations run locally on your device.</li>
+</ul>`,
+
+
+      percent: `<h3>About the Percentage Calculator</h3>
+<p>The <strong>Percentage Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps you instantly calculate percentages, percentage changes, and comparisons — all in one simple tool. Whether you’re figuring out discounts, grade scores, tax amounts, or growth rates, this calculator provides accurate results in seconds. It’s 100% free, ad-light, and runs directly in your browser without any login or app installation.</p>
+
+<h3>How to Use</h3>
+<p>Select your desired percentage operation from the dropdown list — such as <strong>“What is X% of Y?”</strong>, <strong>“X is what percent of Y?”</strong>, or <strong>“Percentage increase or decrease from X to Y”</strong>. Enter your numbers and click <strong>Calculate</strong>. The result will appear instantly with precise percentage values. You can also reuse the tool multiple times without refreshing the page.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can it calculate percentage change?</strong> Yes — it supports both percentage increase and decrease calculations.</li>
+<li><strong>Is it accurate for financial or academic use?</strong> Absolutely — it uses standard percentage formulas for reliable precision.</li>
+<li><strong>Do I need an account?</strong> No — all calculations are done locally on your device for maximum privacy and convenience.</li>
+</ul>`,
+
+
+      discount: `<h3>About the Discount Calculator</h3>
+<p>The <strong>Discount Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps you quickly find the final price of any product after applying a discount. Whether you’re shopping online, running a store, or comparing sale offers, this tool calculates both the discount amount and the reduced price instantly. It’s perfect for eCommerce users, students, and anyone looking to make smart savings decisions.</p>
+
+<h3>How to Use</h3>
+<p>Enter the <strong>original price</strong> and the <strong>discount percentage</strong> into the fields, then click <strong>Calculate</strong>. The calculator will display the discount amount and the final price you’ll pay after the reduction. You can easily adjust the values to compare different offers or sales percentages. The tool works instantly and requires no sign-up or app downloads.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I use it for multiple discounts?</strong> You can calculate one discount at a time — simply enter the new price as the base to chain discounts.</li>
+<li><strong>Is it suitable for store owners?</strong> Yes, it’s perfect for businesses or sellers who need quick pricing adjustments.</li>
+<li><strong>Does it work offline?</strong> Yes — all calculations are done locally in your browser, keeping your data private.</li>
+</ul>`,
+
+
+      math: `<h3>About the Simple Math Tools</h3>
+<p>The <strong>Simple Math Tools</strong> section from <strong>TrendingDays Tools Hub</strong> provides quick, reliable solutions for everyday calculations. Whether you need to find the sum, average, or factorial of numbers, this free math calculator saves time and effort. It’s designed for students, teachers, professionals, and anyone who needs fast and accurate number crunching without switching to a spreadsheet or scientific calculator.</p>
+
+<h3>How to Use</h3>
+<p>Enter one or more numbers separated by commas, then choose a function such as <strong>Sum</strong>, <strong>Average</strong>, or <strong>Factorial</strong>. Click <strong>Compute</strong> to see your result instantly. The tool performs all calculations locally within your browser, ensuring both speed and privacy. It works seamlessly on desktop and mobile, making it a handy utility for classroom, office, or personal use.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I enter decimals?</strong> Yes, the calculator accepts both whole and decimal numbers.</li>
+<li><strong>Does it support negative numbers?</strong> Absolutely — you can calculate with both positive and negative values.</li>
+<li><strong>Is it accurate?</strong> Yes, results are computed using precise JavaScript math logic to ensure accuracy every time.</li>
+</ul>`,
+
+
+     date: `<h3>About the Date Difference / Countdown Calculator</h3>
+<p>The <strong>Date Difference & Countdown Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps you instantly find the number of days, weeks, or months between two dates — or count down to a future event. Whether you’re tracking project deadlines, travel plans, birthdays, or anniversaries, this free date calculator gives you precise results in seconds, directly in your browser.</p>
+
+<h3>How to Use</h3>
+<p>Choose a start date and an end date using the date fields, then click <strong>Calculate</strong>. The tool instantly displays the total number of days between the two dates. You can also use it as a countdown timer by selecting today’s date and a future date. All calculations run locally on your device — no data is uploaded or stored, keeping your usage 100% private.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I use it for past dates?</strong> Yes, the tool works for both past and future date ranges.</li>
+<li><strong>Does it show weeks or months?</strong> It shows total days, and you can manually divide for weeks or months if needed.</li>
+<li><strong>Is it accurate?</strong> Absolutely — it uses real-time JavaScript date logic for precise results.</li>
+</ul>`,
+
+
+      pace: `<h3>About the Speed / Pace Calculator</h3>
+<p>The <strong>Speed and Pace Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps athletes, runners, and cyclists accurately calculate their pace, speed, or time per distance. Whether you’re tracking your jogging time, cycling performance, or planning a marathon goal, this free tool provides instant and precise results to help you measure progress and improve performance.</p>
+
+<h3>How to Use</h3>
+<p>Enter your total distance (in kilometers) and the total time (in minutes), then click <strong>Calculate</strong>. The tool will display your average speed in km/h and your pace in minutes per kilometer. You can adjust the inputs anytime to experiment with different distances and timings. It’s fully responsive and works on both mobile and desktop devices — no app downloads needed.</p>
+
+<h3>FAQs</h3>
+<ul>
+<li><strong>Can I use miles instead of kilometers?</strong> Currently, the default units are kilometers and minutes, but you can easily convert values using our <a href="#" onclick="showTool('unit')">Unit Converter</a>.</li>
+<li><strong>Who is it for?</strong> Ideal for runners, walkers, cyclists, and anyone tracking endurance or training progress.</li>
+<li><strong>Is it accurate?</strong> Yes — results are computed instantly using standard pace and speed formulas for fitness tracking.</li>
+</ul>`,
+
+    };
+
+    const toolTemplates={
+      age:`<h2>Age Calculator</h2><label>Birthdate:</label><input type="date" id="birthdate"><button onclick="calculateAge()">Calculate</button><div class="result" id="ageResult"></div>`,
+      bmi:`<h2>BMI Calculator</h2><label>Weight (kg):</label><input type="number" id="bmiWeight"><label>Height (cm):</label><input type="number" id="bmiHeight"><button onclick="calculateBMI()">Calculate</button><div class="result" id="bmiResult"></div>`,
+      loan:`<h2>Loan Calculator</h2><label>Principal ($):</label><input type="number" id="loanPrincipal"><label>Rate (%):</label><input type="number" id="loanRate"><label>Years:</label><input type="number" id="loanYears"><button onclick="calculateLoan()">Calculate</button><div class="result" id="loanResult"></div>`,
+      tip:`<h2>Tip Calculator</h2><label>Bill ($):</label><input type="number" id="bill"><label>Tip (%):</label><input type="number" id="tipPct"><label>People:</label><input type="number" id="tipPeople"><button onclick="calculateTip()">Calculate</button><div class="result" id="tipResult"></div>`,
+      unit:`<h2>Unit Converter</h2><select id="convertType" onchange="updateLabels()"><option value="length">Length (m↔ft)</option><option value="weight">Weight (kg↔lb)</option><option value="temperature">Temperature (°C↔°F)</option><option value="volume">Volume (L↔gal)</option><option value="speed">Speed (km/h↔mph)</option></select><div id="unitLabel" style="margin:8px 0;font-weight:600">m → ft</div><input type="number" id="convertValue" placeholder="Enter value"><button class='swap-btn' onclick='swapUnits()'>Swap</button><button onclick='convertUnit()'>Convert</button><div class='result' id='convertResult'></div>`,
+      percent:`
+<h2>Percentage Calculator</h2>
+<label>Choose a calculation type:</label>
+<select id="percentType">
+  <option value="of">What is X% of Y?</option>
+  <option value="is">X is what percent of Y?</option>
+  <option value="change">Percentage increase/decrease from X to Y</option>
+</select>
+<div id="percentInputs" style="margin-top:10px;"></div>
+<button onclick="calcPercentage()">Calculate</button>
+<div class="result" id="percentResult"></div>
+`,
+      discount:`<h2>Discount Calculator</h2><label>Original price:</label><input type='number' id='discOrig'><label>Discount (%):</label><input type='number' id='discPct'><button onclick='calcDiscount()'>Calculate</button><div class='result' id='discResult'></div>`,
+      math:`<h2>Simple Math Tools</h2><label>Numbers (comma separated):</label><input type='text' id='mathNums' placeholder='e.g., 3,5,7'><select id='mathOp'><option value='sum'>Sum</option><option value='avg'>Average</option><option value='fact'>Factorial (first number)</option></select><button onclick='calcMath()'>Compute</button><div class='result' id='mathResult'></div>`,
+      date:`<h2>Date Difference / Countdown</h2><label>From:</label><input type='date' id='dateFrom'><label>To:</label><input type='date' id='dateTo'><button onclick='calcDateDiff()'>Calculate</button><div class='result' id='dateResult'></div>`,
+      pace:`<h2>Speed / Pace Calculator</h2><label>Distance (km):</label><input type='number' id='paceDist'><label>Time (minutes):</label><input type='number' id='paceTime'><button onclick='calcPace()'>Calculate</button><div class='result' id='paceResult'></div>`
+    };
+
+    tools.forEach((tool,i)=>{
+      const card=document.createElement('div');
+      card.className='tool-card'+(i===0?' active':'');
+      card.id=tool.id;
+      card.innerHTML=toolTemplates[tool.id]+"<div class='guidance'>"+guidanceContent[tool.id]+"</div>";
+      toolsContainer.appendChild(card);
+    });
+
+    function showTool(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tool-card').forEach(c=>c.classList.remove('active'));
+  document.querySelector(`.tab[data-target="${id}"]`).classList.add('active');
+  document.getElementById(id).classList.add('active');
+
+  // ✅ Mobile-only scroll behavior
+  if (window.innerWidth <= 700) {
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+}
+
+
+   function showPage(pg){
+  // Hide all pages first
+  const pages = ['home','about','contact','privacy','terms','disclaimer','support'];
+  pages.forEach(p => {
+    const el = document.getElementById(p + 'Page');
+    if (el) el.style.display = 'none';
+  });
+
+  // Show the selected page
+  const target = document.getElementById(pg + 'Page');
+  if (target) {
+    target.style.display = 'block';
+
+            // ✅ Always scroll to top (both desktop + mobile)
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // ✅ Mobile-only smooth scroll to top
+    if (window.innerWidth <= 700) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  } else {
+    document.getElementById('homePage').style.display = 'block';
+  }
+}
+
+
+    // Core calculators
+    function calculateAge(){
+      const b=document.getElementById('birthdate').value;if(!b)return alert('Enter birth date');
+      const birth=new Date(b),now=new Date();
+      let y=now.getFullYear()-birth.getFullYear(),m=now.getMonth()-birth.getMonth(),d=now.getDate()-birth.getDate();
+      if(d<0){d+=30;m--;} if(m<0){m+=12;y--;}
+      document.getElementById('ageResult').textContent=`${y} years, ${m} months, ${d} days`;
+    }
+    function calculateBMI(){
+      const w=parseFloat(bmiWeight.value),h=parseFloat(bmiHeight.value)/100;if(!w||!h)return alert('Invalid');
+      const bmi=(w/(h*h)).toFixed(1);
+      const cat=bmi<18.5?'Underweight':bmi<25?'Normal':bmi<30?'Overweight':'Obese';
+      bmiResult.textContent=`BMI ${bmi} (${cat})`;
+    }
+    function calculateLoan(){
+      const P=parseFloat(loanPrincipal.value),r=parseFloat(loanRate.value)/100/12,y=parseFloat(loanYears.value);
+      if(!P||!r||!y)return alert('Invalid numbers');
+      const n=y*12,pmt=(P*r)/(1-Math.pow(1+r,-n)),tot=pmt*n,i=tot-P;
+      loanResult.textContent=`Monthly $${pmt.toFixed(2)}, Interest $${i.toFixed(2)}`;
+    }
+    function calculateTip(){
+      const b=+bill.value,p=+tipPct.value,pe=+tipPeople.value||1;
+      if(!b||!p)return alert('Invalid');
+      const tp=b*(p/100),t=b+tp;
+      tipResult.textContent=`Total $${t.toFixed(2)}, each $${(t/pe).toFixed(2)}`;
+    }
+
+    function updateLabels(){
+      const map={length:['m','ft'],weight:['kg','lb'],temperature:['°C','°F'],volume:['L','gal'],speed:['km/h','mph']};
+      const [a,b]=map[convertType.value];unitLabel.textContent=reversed?`${b} → ${a}`:`${a} → ${b}`;
+    }
+    function swapUnits(){reversed=!reversed;updateLabels();}
+    function convertUnit(){
+      const v=parseFloat(convertValue.value),t=convertType.value;if(isNaN(v))return alert('Enter value');
+      let r;switch(t){
+        case'length':r=reversed?`${v} ft = ${(v/3.28084).toFixed(4)} m`:`${v} m = ${(v*3.28084).toFixed(4)} ft`;break;
+        case'weight':r=reversed?`${v} lb = ${(v/2.20462).toFixed(4)} kg`:`${v} kg = ${(v*2.20462).toFixed(4)} lb`;break;
+        case'temperature':r=reversed?`${v}°F = ${((v-32)*5/9).toFixed(2)}°C`:`${v}°C = ${((v*9/5)+32).toFixed(2)}°F`;break;
+        case'volume':r=reversed?`${v} gal = ${(v/0.264172).toFixed(4)} L`:`${v} L = ${(v*0.264172).toFixed(4)} gal`;break;
+        case'speed':r=reversed?`${v} mph = ${(v/0.621371).toFixed(4)} km/h`:`${v} km/h = ${(v*0.621371).toFixed(4)} mph`;break;
+      }convertResult.textContent=r;
+    }
+// Updated Percentage Calculator Logic
+function renderPercentFields() {
+  const t = document.getElementById('percentType').value;
+  const c = document.getElementById('percentInputs');
+  if (t === 'of') {
+    c.innerHTML = `
+      <label>Percentage (%):</label>
+      <input type="number" id="percentNum">
+      <label>Of number:</label>
+      <input type="number" id="baseNum">
+    `;
+  } else if (t === 'is') {
+    c.innerHTML = `
+      <label>Number (X):</label>
+      <input type="number" id="numX">
+      <label>Of number (Y):</label>
+      <input type="number" id="numY">
+    `;
+  } else {
+    c.innerHTML = `
+      <label>From:</label>
+      <input type="number" id="fromNum">
+      <label>To:</label>
+      <input type="number" id="toNum">
+    `;
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const pt = document.getElementById('percentType');
+  if (pt) {
+    renderPercentFields();
+    pt.addEventListener('change', renderPercentFields);
+  }
+});
+
+function calcPercentage() {
+  const t = document.getElementById('percentType').value;
+  let resultText = '';
+
+  if (t === 'of') {
+    const perc = parseFloat(percentNum.value);
+    const base = parseFloat(baseNum.value);
+    if (isNaN(perc) || isNaN(base)) return alert('Please enter valid numbers');
+    const val = (perc / 100) * base;
+    resultText = `${perc}% of ${base} = ${val.toFixed(2)}`;
+  } else if (t === 'is') {
+    const x = parseFloat(numX.value);
+    const y = parseFloat(numY.value);
+    if (isNaN(x) || isNaN(y) || y === 0) return alert('Please enter valid numbers');
+    const perc = (x / y) * 100;
+    resultText = `${x} is ${perc.toFixed(2)}% of ${y}`;
+  } else {
+    const from = parseFloat(fromNum.value);
+    const to = parseFloat(toNum.value);
+    if (isNaN(from) || isNaN(to) || from === 0) return alert('Please enter valid numbers');
+    const change = ((to - from) / from) * 100;
+    const type = change >= 0 ? 'increase' : 'decrease';
+    resultText = `This is a ${Math.abs(change).toFixed(2)}% ${type} from ${from} to ${to}`;
+  }
+
+  document.getElementById('percentResult').textContent = resultText;
+
+    }
+    function calcDiscount(){
+      const o=+discOrig.value,d=+discPct.value;if(!o||!d)return alert('Invalid numbers');
+      discount= o-(o*d/100);discResult.textContent=`Discounted Price $${discount.toFixed(2)}`;
+    }
+    function calcMath(){
+      const arr=mathNums.value.split(',').map(n=>parseFloat(n)).filter(n=>!isNaN(n));
+      if(!arr.length)return alert('Enter numbers');
+      const op=mathOp.value;let res;
+      if(op==='sum')res=arr.reduce((a,b)=>a+b,0);
+      else if(op==='avg')res=arr.reduce((a,b)=>a+b,0)/arr.length;
+      else res=fact(arr[0]);
+      mathResult.textContent=`Result: ${res}`;
+    }
+    function fact(n){return n<=1?1:n*fact(n-1);}
+    function calcDateDiff(){
+      const f=new Date(dateFrom.value),t=new Date(dateTo.value);if(!f||!t)return alert('Enter both');
+      const diff=Math.abs(t-f),days=Math.floor(diff/(1000*60*60*24));
+      dateResult.textContent=`Difference: ${days} days`;
+    }
+    function calcPace(){
+      const d=+paceDist.value,t=+paceTime.value;if(!d||!t)return alert('Invalid');
+      const spd=d/(t/60),pace=t/d;
+      paceResult.textContent=`Speed ${spd.toFixed(2)} km/h, Pace ${pace.toFixed(2)} min/km`;
+    }
+    updateLabels();
+  </script>
+</body>
+</html>
