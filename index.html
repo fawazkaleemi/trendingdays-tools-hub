@@ -91,21 +91,19 @@
 
 header {
   display: flex;
-  align-items: center;           /* Vertically center all content */
-  justify-content: center;       /* Centers the block horizontally */
-  padding: 14px 30px;
+  justify-content: center;  /* Center horizontally the group */
+  align-items: center;      /* Vertically center all contents */
+  gap: 25px;                /* Distance between logo and text block */
+  padding: 10px 30px;
   background: var(--primary);
   color: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  gap: 40px;                     /* Space between logo and text */
-  flex-wrap: wrap;
 }
 
 .header-left .logo {
-  height: 120px;                /* Larger logo */
-  width: auto;
-  border-radius: 14px;
+  height: 80px;     /* Reduced height */
+  width: 160px;     /* Increased width proportionally */
   object-fit: contain;
+  border-radius: 14px;
 }
 
 .header-right {
@@ -114,56 +112,58 @@ header {
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  gap: 8px;
+  gap: 5px;
 }
 
 .header-right h1 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
 .brand-tagline {
-  color: var(--accent);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 4px;
 }
 
 .header-right nav {
   display: flex;
-  gap: 20px;
+  gap: 18px;
 }
 
 .header-right nav a {
+  text-decoration: none;
   color: white;
   font-weight: 600;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: color 0.3s;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
 }
 
 .header-right nav a:hover {
   color: var(--accent);
 }
 
-/* Responsive adjustments */
-@media (max-width: 800px) {
+/* Responsive tweaks */
+@media (max-width: 700px) {
   header {
     flex-direction: column;
     text-align: center;
   }
   .header-left .logo {
-    height: 90px;
+    height: 60px;
+    width: 120px;
+    margin-bottom: 10px;
   }
   .header-right {
     align-items: center;
   }
   .header-right nav {
     justify-content: center;
+    gap: 12px;
   }
 }
-
-
 
 /* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
 .side-ad,
@@ -800,6 +800,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
