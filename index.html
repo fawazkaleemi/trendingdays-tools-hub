@@ -89,81 +89,100 @@
     .social-icons svg:hover{fill:var(--accent);}
     @media(max-width:700px){.tabs{flex-direction:column;} .tab{text-align:center;width:100%;}}
 
+/* ===== CLEAN CENTERED HEADER (FINAL) ===== */
 header {
-  display: flex;
-  justify-content: center;  /* Center horizontally the group */
-  align-items: center;      /* Vertically center all contents */
-  gap: 25px;                /* Distance between logo and text block */
-  padding: 10px 30px;
   background: var(--primary);
   color: white;
+  padding: 18px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.header-left .logo {
-  height: 80px;     /* Reduced height */
-  width: 160px;     /* Increased width proportionally */
+/* Center the logo + content block */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+/* Logo sizing */
+.logo {
+  height: 100px;
+  width: auto;
+  border-radius: 12px;
   object-fit: contain;
-  border-radius: 14px;
 }
 
-.header-right {
+/* Text + tagline + nav grouped neatly */
+.brand-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  gap: 5px;
 }
 
-.header-right h1 {
+/* Main title */
+.brand-content h1 {
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   font-weight: 700;
+  line-height: 1.2;
 }
 
+/* Tagline */
 .brand-tagline {
+  color: var(--accent);
   font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 4px;
+  margin: 4px 0 10px;
 }
 
-.header-right nav {
-  display: flex;
-  gap: 18px;
-}
-
-.header-right nav a {
-  text-decoration: none;
+/* Navigation links */
+nav a {
   color: white;
+  margin-right: 15px;
+  text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  transition: color 0.3s ease;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
-.header-right nav a:hover {
+nav a:hover {
   color: var(--accent);
 }
 
-/* Responsive tweaks */
-@media (max-width: 700px) {
-  header {
+/* ===== Responsive header ===== */
+@media (max-width: 800px) {
+  .header-container {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
-  .header-left .logo {
-    height: 60px;
-    width: 120px;
-    margin-bottom: 10px;
-  }
-  .header-right {
+
+  .brand-content {
     align-items: center;
+    text-align: center;
   }
-  .header-right nav {
-    justify-content: center;
-    gap: 12px;
+
+  .logo {
+    height: 85px;
+  }
+
+  .brand-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.9rem;
+  }
+
+  nav a {
+    margin: 0 10px;
+    font-size: 0.95rem;
   }
 }
+
 
 /* ===== TEMPORARILY HIDE ALL ADS FOR ADSENSE REVIEW ===== */
 .side-ad,
@@ -264,17 +283,17 @@ header {
 </div>
 
 <header>
-  <div class="header-left">
+  <div class="header-container">
     <img src="./assets/logo.png" alt="TrendingDays Tools Hub Logo" class="logo">
-  </div>
-  <div class="header-right">
-    <h1>TrendingDays Tools Hub</h1>
-    <span class="brand-tagline">Smart Multi-Tool Hub</span>
-    <nav>
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('about')">About Us</a>
-      <a href="#" onclick="showPage('contact')">Contact Us</a>
-    </nav>
+    <div class="brand-content">
+      <h1>TrendingDays Tools Hub</h1>
+      <span class="brand-tagline">Smart Multi-Tool Hub</span>
+      <nav>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About Us</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -800,6 +819,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
