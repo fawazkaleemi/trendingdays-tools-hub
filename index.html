@@ -108,8 +108,9 @@ header {
 }
 
 .logo {
-  height: 90px;          /* slightly shorter */
-  width: 200px;          /* wider for better proportion */
+  height: 110px;          /* increase as needed */
+  width: auto;            /* let width auto-adjust */
+  max-width: 240px;       /* prevent it from being too large */
   border-radius: 14px;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -160,10 +161,11 @@ header nav a:hover {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 800px) {
-  .header-container {
-    flex-direction: column;
-    text-align: center;
+  .logo {
+    height: 85px;
+    max-width: 160px;
   }
+}
 
   .logo {
     height: 90px;
@@ -750,6 +752,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
