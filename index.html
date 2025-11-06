@@ -102,10 +102,10 @@ header {
 
 .logo {
   height: 80px;
-  width: 160px;              /* force it to look rectangular */
+  width: 160px;
   border-radius: 10px;
-  object-fit: cover;         /* fills the space evenly */
-  aspect-ratio: 2 / 1;       /* helps maintain a nice horizontal stretch */
+  object-fit: contain;
+  aspect-ratio: 2 / 1;
   transition: transform 0.3s ease;
 }
 
@@ -801,6 +801,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
