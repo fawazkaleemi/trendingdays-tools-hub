@@ -220,6 +220,38 @@ footer a:active {
   letter-spacing: 0.3px;               /* Subtle polish */
 }
 
+    /* ===== Elegant Hover Glow Effect (Header + Footer Links) ===== */
+header nav a,
+footer a {
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Gold glow on hover */
+header nav a:hover,
+footer a:hover {
+  color: var(--accent) !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+/* Optional subtle underline animation */
+header nav a::after,
+footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+header nav a:hover::after,
+footer a:hover::after {
+  width: 100%;
+}
+
   
   </style>
 </head>
@@ -775,6 +807,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
