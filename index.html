@@ -101,42 +101,50 @@ header {
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: center;  /* centers the whole group */
-  gap: 18px;                /* space between logo and text */
+  justify-content: center;  /* keeps everything centered */
+  gap: 18px;
   flex-wrap: nowrap;
 }
 
 .logo {
   height: 80px;
-  width: auto;              /* auto keeps proportions */
-  max-width: 250px;         /* prevents oversize on large screens */
+  width: 160px;              /* force it to look rectangular */
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;         /* fills the space evenly */
+  aspect-ratio: 2 / 1;       /* helps maintain a nice horizontal stretch */
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
 }
 
 .brand-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  /* aligns text nicely to the left of logo */
-  text-align: left;
+  align-items: center;        /* center everything vertically */
+  text-align: center;
+  gap: 6px;
 }
 
 .brand-content h1 {
+  margin: 0;
   font-size: 1.9rem;
   font-weight: 700;
-  margin: 0;
+  line-height: 1.2;
 }
 
 .brand-tagline {
   font-size: 1rem;
   color: var(--accent);
-  margin-bottom: 6px;
 }
 
 header nav {
   display: flex;
+  justify-content: center;
   gap: 18px;
 }
+
 
 header nav a {
   color: white;
@@ -742,4 +750,5 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
