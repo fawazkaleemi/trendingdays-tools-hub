@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Pages -->
+  <url>
+    <loc>https://trendingdays.com/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/contact.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/privacy.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/terms.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/disclaimer.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://trendingdays.com/support.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Tool Sections (anchors still help SEO context) -->
+  <url><loc>https://trendingdays.com/#age-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#bmi-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#loan-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#tip-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#unit-converter</loc></url>
+  <url><loc>https://trendingdays.com/#percentage-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#discount-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#math-tools</loc></url>
+  <url><loc>https://trendingdays.com/#date-calculator</loc></url>
+  <url><loc>https://trendingdays.com/#pace-calculator</loc></url>
+</urlset>
