@@ -108,12 +108,13 @@ header {
 }
 
 .logo {
-  height: 140px;          /* increased height for visibility */
-  width: 250px;           /* proportional width (≈1.8× height) */
+  height: 150px;        /* bigger height */
+  width: 280px;         /* proportional width (1.9:1 ratio) */
   border-radius: 16px;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
+
 
 .logo:hover {
   transform: scale(1.03); /* subtle hover zoom for a premium feel */
@@ -198,82 +199,7 @@ header nav a:hover {
   opacity: 0;
 }
 
-/* ===== HEADER (FIXED + CENTERED ALIGNMENT) ===== */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Left section (logo + title + tagline) */
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo {
-  height: 56px;
-  width: auto;
-  border-radius: 12px;
-}
-
-.brand-text h1 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.brand-tagline {
-  font-size: 0.85rem;
-  color: var(--accent);
-  display: block;
-  margin-top: 2px;
-}
-
-/* Right section (nav links) */
-.header-right a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
-}
-
-.header-right a:hover {
-  color: var(--accent);
-}
-
-/* ===== Responsive header for mobile ===== */
-@media (max-width: 700px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-  }
-  .header-left {
-    flex-direction: column;
-    align-items: center;
-  }
-  .brand-text h1 {
-    font-size: 1.2rem;
-  }
-  .brand-tagline {
-    font-size: 0.8rem;
-  }
-  .logo {
-    height: 48px;
-  }
-  .header-right {
-    margin-top: 8px;
-  }
-}
-    
+  
   </style>
 </head>
 <body>
@@ -825,6 +751,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
