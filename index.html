@@ -35,6 +35,23 @@
 
   <style>
 
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 10px;
+  background: #ffd700;
+  color: #000;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.3s;
+  z-index: 1000;
+}
+.skip-link:focus {
+  top: 10px;
+}
+    
 .side-ad {
   position: fixed;
   top: 120px; /* below the header */
@@ -258,6 +275,8 @@ footer a:hover::after {
 </head>
 <body>
 
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+  
 <!-- Left Side Ad -->
 <div class="side-ad left-ad">
   [Your HilltopAds code here]
@@ -811,6 +830,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
