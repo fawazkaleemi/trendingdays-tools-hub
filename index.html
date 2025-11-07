@@ -623,29 +623,147 @@ tip: `<h3>About the Tip Calculator</h3>
 
     };
 
-    const toolTemplates={
-      age:`<h2>Age Calculator</h2><label>Birthdate:</label><input type="date" id="birthdate"><button onclick="calculateAge()">Calculate</button><div class="result" id="ageResult"></div>`,
-      bmi:`<h2>BMI Calculator</h2><label>Weight (kg):</label><input type="number" id="bmiWeight"><label>Height (cm):</label><input type="number" id="bmiHeight"><button onclick="calculateBMI()">Calculate</button><div class="result" id="bmiResult"></div>`,
-      loan:`<h2>Loan Calculator</h2><label>Principal ($):</label><input type="number" id="loanPrincipal"><label>Rate (%):</label><input type="number" id="loanRate"><label>Years:</label><input type="number" id="loanYears"><button onclick="calculateLoan()">Calculate</button><div class="result" id="loanResult"></div>`,
-      tip:`<h2>Tip Calculator</h2><label>Bill ($):</label><input type="number" id="bill"><label>Tip (%):</label><input type="number" id="tipPct"><label>People:</label><input type="number" id="tipPeople"><button onclick="calculateTip()">Calculate</button><div class="result" id="tipResult"></div>`,
-      unit:`<h2>Unit Converter</h2><select id="convertType" onchange="updateLabels()"><option value="length">Length (m↔ft)</option><option value="weight">Weight (kg↔lb)</option><option value="temperature">Temperature (°C↔°F)</option><option value="volume">Volume (L↔gal)</option><option value="speed">Speed (km/h↔mph)</option></select><div id="unitLabel" style="margin:8px 0;font-weight:600">m → ft</div><input type="number" id="convertValue" placeholder="Enter value"><button class='swap-btn' onclick='swapUnits()'>Swap</button><button onclick='convertUnit()'>Convert</button><div class='result' id='convertResult'></div>`,
-      percent:`
-<h2>Percentage Calculator</h2>
-<label>Choose a calculation type:</label>
-<select id="percentType">
-  <option value="of">What is X% of Y?</option>
-  <option value="is">X is what percent of Y?</option>
-  <option value="change">Percentage increase/decrease from X to Y</option>
-</select>
-<div id="percentInputs" style="margin-top:10px;"></div>
-<button onclick="calcPercentage()">Calculate</button>
-<div class="result" id="percentResult"></div>
-`,
-      discount:`<h2>Discount Calculator</h2><label>Original price:</label><input type='number' id='discOrig'><label>Discount (%):</label><input type='number' id='discPct'><button onclick='calcDiscount()'>Calculate</button><div class='result' id='discResult'></div>`,
-      math:`<h2>Simple Math Tools</h2><label>Numbers (comma separated):</label><input type='text' id='mathNums' placeholder='e.g., 3,5,7'><select id='mathOp'><option value='sum'>Sum</option><option value='avg'>Average</option><option value='fact'>Factorial (first number)</option></select><button onclick='calcMath()'>Compute</button><div class='result' id='mathResult'></div>`,
-      date:`<h2>Date Difference / Countdown</h2><label>From:</label><input type='date' id='dateFrom'><label>To:</label><input type='date' id='dateTo'><button onclick='calcDateDiff()'>Calculate</button><div class='result' id='dateResult'></div>`,
-      pace:`<h2>Speed / Pace Calculator</h2><label>Distance (km):</label><input type='number' id='paceDist'><label>Time (minutes):</label><input type='number' id='paceTime'><button onclick='calcPace()'>Calculate</button><div class='result' id='paceResult'></div>`
-    };
+const toolTemplates = {
+  age: `
+    <h2>Age Calculator</h2>
+    <form aria-label="Age Calculator Form">
+      <label for="birthdate">Birthdate:</label>
+      <input type="date" id="birthdate" name="birthdate" aria-required="true">
+      <button type="button" onclick="calculateAge()">Calculate</button>
+    </form>
+    <div class="result" id="ageResult" aria-live="polite"></div>
+  `,
+
+  bmi: `
+    <h2>BMI Calculator</h2>
+    <form aria-label="BMI Calculator Form">
+      <label for="bmiWeight">Weight (kg):</label>
+      <input type="number" id="bmiWeight" name="bmiWeight" inputmode="decimal" aria-required="true">
+      <label for="bmiHeight">Height (cm):</label>
+      <input type="number" id="bmiHeight" name="bmiHeight" inputmode="decimal" aria-required="true">
+      <button type="button" onclick="calculateBMI()">Calculate</button>
+    </form>
+    <div class="result" id="bmiResult" aria-live="polite"></div>
+  `,
+
+  loan: `
+    <h2>Loan Calculator</h2>
+    <form aria-label="Loan Calculator Form">
+      <label for="loanPrincipal">Principal ($):</label>
+      <input type="number" id="loanPrincipal" name="loanPrincipal" inputmode="decimal" aria-required="true">
+      <label for="loanRate">Rate (%):</label>
+      <input type="number" id="loanRate" name="loanRate" inputmode="decimal" aria-required="true">
+      <label for="loanYears">Years:</label>
+      <input type="number" id="loanYears" name="loanYears" inputmode="numeric" aria-required="true">
+      <button type="button" onclick="calculateLoan()">Calculate</button>
+    </form>
+    <div class="result" id="loanResult" aria-live="polite"></div>
+  `,
+
+  tip: `
+    <h2>Tip Calculator</h2>
+    <form aria-label="Tip Calculator Form">
+      <label for="bill">Bill Amount ($):</label>
+      <input type="number" id="bill" name="bill" inputmode="decimal" aria-required="true">
+      <label for="tipPct">Tip Percentage (%):</label>
+      <input type="number" id="tipPct" name="tipPct" inputmode="decimal" aria-required="true">
+      <label for="tipPeople">Number of People:</label>
+      <input type="number" id="tipPeople" name="tipPeople" inputmode="numeric" aria-required="true">
+      <button type="button" onclick="calculateTip()">Calculate</button>
+    </form>
+    <div class="result" id="tipResult" aria-live="polite"></div>
+  `,
+
+  unit: `
+    <h2>Unit Converter</h2>
+    <form aria-label="Unit Converter Form">
+      <label for="convertType">Conversion Type:</label>
+      <select id="convertType" name="convertType" onchange="updateLabels()" aria-required="true">
+        <option value="length">Length (m ↔ ft)</option>
+        <option value="weight">Weight (kg ↔ lb)</option>
+        <option value="temperature">Temperature (°C ↔ °F)</option>
+        <option value="volume">Volume (L ↔ gal)</option>
+        <option value="speed">Speed (km/h ↔ mph)</option>
+      </select>
+      <div id="unitLabel" style="margin:8px 0;font-weight:600">m → ft</div>
+      <label for="convertValue">Enter Value:</label>
+      <input type="number" id="convertValue" name="convertValue" inputmode="decimal" placeholder="Enter value" aria-required="true">
+      <div>
+        <button type="button" class="swap-btn" onclick="swapUnits()">Swap</button>
+        <button type="button" onclick="convertUnit()">Convert</button>
+      </div>
+    </form>
+    <div class="result" id="convertResult" aria-live="polite"></div>
+  `,
+
+  percent: `
+    <h2>Percentage Calculator</h2>
+    <form aria-label="Percentage Calculator Form">
+      <label for="percentType">Choose Calculation Type:</label>
+      <select id="percentType" name="percentType" aria-required="true">
+        <option value="of">What is X% of Y?</option>
+        <option value="is">X is what percent of Y?</option>
+        <option value="change">Percentage increase/decrease from X to Y</option>
+      </select>
+      <div id="percentInputs" style="margin-top:10px;"></div>
+      <button type="button" onclick="calcPercentage()">Calculate</button>
+    </form>
+    <div class="result" id="percentResult" aria-live="polite"></div>
+  `,
+
+  discount: `
+    <h2>Discount Calculator</h2>
+    <form aria-label="Discount Calculator Form">
+      <label for="discOrig">Original Price ($):</label>
+      <input type="number" id="discOrig" name="discOrig" inputmode="decimal" aria-required="true">
+      <label for="discPct">Discount Percentage (%):</label>
+      <input type="number" id="discPct" name="discPct" inputmode="decimal" aria-required="true">
+      <button type="button" onclick="calcDiscount()">Calculate</button>
+    </form>
+    <div class="result" id="discResult" aria-live="polite"></div>
+  `,
+
+  math: `
+    <h2>Simple Math Tools</h2>
+    <form aria-label="Math Tools Form">
+      <label for="mathNums">Numbers (comma separated):</label>
+      <input type="text" id="mathNums" name="mathNums" placeholder="e.g., 3, 5, 7" aria-required="true">
+      <label for="mathOp">Choose Operation:</label>
+      <select id="mathOp" name="mathOp" aria-required="true">
+        <option value="sum">Sum</option>
+        <option value="avg">Average</option>
+        <option value="fact">Factorial (first number)</option>
+      </select>
+      <button type="button" onclick="calcMath()">Compute</button>
+    </form>
+    <div class="result" id="mathResult" aria-live="polite"></div>
+  `,
+
+  date: `
+    <h2>Date Difference / Countdown</h2>
+    <form aria-label="Date Calculator Form">
+      <label for="dateFrom">From Date:</label>
+      <input type="date" id="dateFrom" name="dateFrom" aria-required="true">
+      <label for="dateTo">To Date:</label>
+      <input type="date" id="dateTo" name="dateTo" aria-required="true">
+      <button type="button" onclick="calcDateDiff()">Calculate</button>
+    </form>
+    <div class="result" id="dateResult" aria-live="polite"></div>
+  `,
+
+  pace: `
+    <h2>Speed / Pace Calculator</h2>
+    <form aria-label="Pace Calculator Form">
+      <label for="paceDist">Distance (km):</label>
+      <input type="number" id="paceDist" name="paceDist" inputmode="decimal" aria-required="true">
+      <label for="paceTime">Time (minutes):</label>
+      <input type="number" id="paceTime" name="paceTime" inputmode="decimal" aria-required="true">
+      <button type="button" onclick="calcPace()">Calculate</button>
+    </form>
+    <div class="result" id="paceResult" aria-live="polite"></div>
+  `
+};
+
 
     tools.forEach((tool,i)=>{
       const card=document.createElement('div');
@@ -830,6 +948,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
