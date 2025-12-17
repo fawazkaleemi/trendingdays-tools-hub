@@ -904,7 +904,14 @@ const toolTemplates = {
 
 
    function showPage(pg){
-  // Hide all pages first
+
+         // ✅ Show intro content only on Home
+  const intro = document.getElementById('intro-content');
+  if (intro) {
+    intro.style.display = (pg === 'home') ? 'block' : 'none';
+  }
+       
+       // Hide all pages first
   const pages = ['home','about','contact','privacy','terms','disclaimer','support'];
   pages.forEach(p => {
     const el = document.getElementById(p + 'Page');
@@ -1062,6 +1069,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
