@@ -694,17 +694,81 @@ Yes. The BMI Calculator is completely free with no registration required.</li>
 `,
 
 loan: `<h3>About the Loan Calculator</h3>
-<p>The <strong>Loan Calculator</strong> by <strong>TrendingDays Tools Hub</strong> helps you estimate monthly payments, total interest, and overall repayment cost for personal, home, or car loans. It’s designed to provide instant financial clarity so you can plan smarter before borrowing. By using simple input fields and automatic calculations, this tool ensures transparency and accuracy without needing any login, registration, or data tracking.</p>
+<p>
+The <strong>Loan Calculator</strong> by <strong>TrendingDays Tools Hub</strong>
+helps you estimate your monthly loan payments, total repayment amount, and
+overall interest cost before committing to a loan. It is designed to give
+clear financial insights for personal loans, home loans, car loans, and other
+fixed-rate borrowing scenarios.
+</p>
 
-<h3>How to Use</h3>
-<p>Enter the loan principal (total borrowed amount), annual interest rate, and repayment term in years. Then click <strong>Calculate</strong>. The tool instantly displays your monthly payment, total amount payable, and total interest cost. You can tweak the numbers anytime to compare different loan options, interest rates, or durations to find the most budget-friendly plan.</p>
+<p>
+This calculator provides a quick and transparent way to understand how loan
+amount, interest rate, and repayment duration affect your monthly budget. All
+calculations run instantly in your browser, with no sign-ups, tracking, or data
+storage involved.
+</p>
 
-<h3>FAQs</h3>
+<h3>How Loan Payments Are Calculated</h3>
+<p>
+Loan payments are calculated using a standard fixed-rate amortization formula,
+which spreads the repayment evenly across the selected loan term.
+</p>
+
+<p>
+<strong>Monthly Payment = P × r ÷ (1 − (1 + r)<sup>−n</sup>)</strong>
+</p>
+
+<p>
+Where:
+</p>
 <ul>
-<li><strong>Can I use this for home or car loans?</strong> Yes, it works for any loan type with fixed interest.</li>
-<li><strong>Does it support compound interest?</strong> Yes — it uses a standard monthly compounding formula.</li>
-<li><strong>Is my information saved?</strong> No, all calculations run locally in your browser for complete privacy.</li>
-</ul>`,
+<li><strong>P</strong> = Loan principal (borrowed amount)</li>
+<li><strong>r</strong> = Monthly interest rate (annual rate ÷ 12)</li>
+<li><strong>n</strong> = Total number of monthly payments</li>
+</ul>
+
+<h3>How to Use the Loan Calculator</h3>
+<p>
+Enter the loan principal, annual interest rate, and loan duration in years.
+Click <strong>Calculate</strong> to view your estimated monthly payment, total
+interest payable, and overall repayment amount. You can adjust the values to
+compare different loan offers, interest rates, or repayment periods.
+</p>
+
+<p>
+This tool is especially useful when planning budgets, comparing lenders, or
+evaluating affordability before applying for a loan.
+</p>
+
+<h3>Accuracy & Limitations</h3>
+<p>
+This calculator assumes a fixed interest rate and equal monthly payments
+throughout the loan term. It does not account for variable interest rates,
+processing fees, prepayment charges, late payment penalties, or taxes that may
+apply depending on the lender or region.
+</p>
+
+<p>
+Results should be treated as estimates only. Always confirm final loan terms
+with your financial institution before making borrowing decisions.
+</p>
+
+<h3>Frequently Asked Questions (FAQs)</h3>
+<ul>
+<li><strong>Can I use this for home, car, or personal loans?</strong><br>
+Yes. The calculator works for any fixed-rate loan with regular monthly payments.</li>
+
+<li><strong>Does it support variable interest rates?</strong><br>
+No. This tool is designed for fixed-rate loans only.</li>
+
+<li><strong>Is my financial data stored?</strong><br>
+No. All calculations are performed locally in your browser and no data is saved.</li>
+
+<li><strong>Is this calculator free to use?</strong><br>
+Yes. The Loan Calculator is completely free with no registration required.</li>
+</ul>
+`,
 
 
 tip: `<h3>About the Tip Calculator</h3>
@@ -1137,6 +1201,7 @@ function calcPercentage() {
   </script>
 </body>
 </html>
+
 
 
 
