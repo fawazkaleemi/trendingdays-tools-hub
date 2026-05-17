@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exact Age Calculator - Calculate Age from Date of Birth - TrendingDays</title>
+    <meta name="description" content="Use our precision tool to calculate age from date of birth. Find your exact age in years, months, and days. 100% private and accurate.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/age-calculator/">
+    <meta property="og:title" content="Age Calculator - Precision Time & Age Tracker - TrendingDays">
+    <meta property="og:description" content="Calculate your precise age in years, months, and days instantly. 100% private and secure.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Age Calculator - Precision Time & Age Tracker - TrendingDays">
+    <meta name="twitter:description" content="Calculate your precise age in years, months, and days instantly. 100% private and secure.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+<style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; /* Tightened for a slim bar */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row;     /* Moves logo to the side of the text */
+        align-items: center;    
+        justify-content: center; /* Keeps the whole group centered in the bar */
+        gap: 20px;               /* Gap between logo and text */
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated; 
+        transform: translateZ(0);   
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { 
+        text-align: left; /* Text aligns left relative to its own container */
+    }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; font-weight: 700; text-align: center; font-size: 1.4rem; color: var(--primary); border: 2px solid #dce2f2; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- 6. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+    <a href="../index.html" style="display: contents;">
+        <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+    </a>
+</div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="tool-card">
+        <h2>Exact Age Calculator</h2>
+        <p>Calculate your age in years, months, and days with high-precision calendar logic. Fast, free, and completely private.</p>
+        
+        <label for="birthdate">Select Date of Birth:</label>
+        <input type="date" id="birthdate">
+        <button onclick="calculateAge()">Calculate Age Now</button>
+        
+        <div id="result" class="result" style="display:none;"></div>
+
+        <div class="content-section">
+            <h2>The Ultimate Guide: How to Calculate Age from Date of Birth</h2>
+            <p>Have you ever needed to <strong>calculate age from date of birth</strong> for a passport application, insurance quote, or school registration? While it seems simple, manual calculations often lead to errors. At <em>TrendingDays Tools Hub</em>, we’ve built a precision engine to help you find your <strong>exact age in years, months, and days</strong> with mathematical certainty.</p>
+            
+            <h3>1. Chronological Age vs. Biological Age: What's the Difference?</h3>
+            <p>Before using our tool, it’s important to understand this distinction. <strong>Chronological Age</strong> is the measure of actual time elapsed since birth. <strong>Biological Age</strong> refers to how old your body <em>seems</em> based on health markers like cellular health and lifestyle. Our calculator provides the legal standard used for <strong>KYC (Know Your Customer)</strong> and government documentation.</p>
+
+            <h3>2. Why Accuracy Matters for Legal Forms</h3>
+            <p>Many administrative tasks require you to <strong>find your exact age</strong> as of a specific date. A one-day error can lead to a rejected application for retirement benefits or social security. Our algorithm accounts for the "birthday boundary," ensuring that if today is your birthday, you are counted as having reached the next year at precisely 12:00 AM.</p>
+
+            <div class="milestone-box">
+                <h3>💡 Pro-Tip: Using Age Calculation for Milestones</h3>
+                <p>Beyond just birthdays, our high-precision Age Calculator is an essential tool for tracking professional milestones. Whether you are calculating the exact "time in service" for a retirement plan, determining the age of a vintage asset for insurance purposes, or tracking the developmental weeks of a newborn, precision matters. By using the <strong>TrendingDays</strong> logic, you ensure that leap years and varying month lengths never skew your data, providing you with a result you can trust for legal or personal documentation.</p>
+            </div>
+
+            <h3>3. The Complexity of Leap Years and Month Lengths</h3>
+            <p>Why can't you just subtract birth year from current year? Because the Gregorian calendar is inconsistent:</p>
+            <ul>
+                <li><strong>Leap Year Logic:</strong> Every four years, February gets an extra day. We ensure February 29th births are calculated accurately across decades.</li>
+                <li><strong>Variable Month Lengths:</strong> Since months range from 28 to 31 days, a "month" isn't a fixed unit. We calculate the specific boundary of each month so your result is never off by 24 hours.</li>
+            </ul>
+
+            <h3>4. Frequently Asked Questions (FAQ)</h3>
+            <p><strong>Q: Is it safe to enter my birth date here?</strong><br>
+            A: Yes. TrendingDays uses 100% <strong>client-side processing</strong>. Your data never touches a server or database; it stays in your browser's RAM.</p>
+            
+            <p><strong>Q: Can I use this for insurance age calculation?</strong><br>
+            A: Absolutely. Most insurance companies use this exact chronological method to determine premiums based on your <strong>exact day count</strong>.</p>
+
+            <h3>5. Growing with TrendingDays</h3>
+            <p>Our mission is to provide the internet's most reliable and private <strong>multi-tool hub</strong>. By focusing on detailed educational context and high-precision code, we ensure that every user gets the value they deserve without compromising their digital footprint. Our 16+ tool suite is designed to scale with your needs.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+
+<script>
+    function calculateAge() {
+        const b = document.getElementById('birthdate').value;
+        if(!b) return alert('Please select a date');
+        const birth = new Date(b);
+        const now = new Date();
+        
+        let y = now.getFullYear() - birth.getFullYear();
+        let m = now.getMonth() - birth.getMonth();
+        let d = now.getDate() - birth.getDate();
+        
+        if (d < 0) {
+            m--;
+            d += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        }
+        if (m < 0) {
+            y--;
+            m += 12;
+        }
+        
+        const resDiv = document.getElementById('result');
+        resDiv.style.display = 'block';
+        resDiv.innerHTML = `You are <strong>${y}</strong> Years, <strong>${m}</strong> Months, and <strong>${d}</strong> Days old.`;
+    }
+</script>
+</body>
+</html>

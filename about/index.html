@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - The TrendingDays Story & Mission</title>
+    <meta name="description" content="Learn about TrendingDays Tools Hub. Our mission is to provide high-precision, privacy-focused digital utilities for everyone.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/about/">
+    <meta property="og:title" content="About Us - TrendingDays Tools Hub">
+    <meta property="og:description" content="Learn more about TrendingDays Tools Hub—our mission to provide fast, free, and 100% private web utilities.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Us - TrendingDays Tools Hub">
+    <meta name="twitter:description" content="Learn more about TrendingDays Tools Hub—our mission to provide fast, free, and 100% private web utilities.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+    
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. ABOUT US SYSTEM CUSTOM SETTINGS --- */
+    .tool-card h1 { margin: 0; font-size: 2.2rem; color: var(--text); }
+    .tool-card h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-top: 35px; margin-bottom: 20px; }
+    .tool-card p { line-height: 1.8; color: #444; }
+    .mission-box { background: #f4f6fc; padding: 25px; border-radius: 8px; border-left: 5px solid var(--primary); margin: 25px 0; font-style: italic; color: #444; line-height: 1.8; }
+
+    /* --- 5. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 6. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h1>About Our Mission</h1>
+        <h2>Our Mission: Privacy Without Compromise</h2>
+        <p>Welcome to <strong>TrendingDays Tools Hub</strong>. We started with a simple observation: the modern internet is filled with "free" tools that aren't actually free. Most online calculators and converters require you to sacrifice your personal data, tracking your location, your financial habits, and your health metrics just to provide a basic result. At TrendingDays, we believe that essential digital utilities should be accessible to everyone without a hidden "privacy tax."</p>
+        
+        <div class="mission-box">
+            "Our mission is to democratize high-precision digital utilities by providing a 100% private, serverless environment where the user—not the data harvester—is the priority."
+        </div>
+
+        <h2>The Engineering Behind the Hub</h2>
+        <p>As a team with deep roots in <strong>Systems Administration and Software Engineering</strong>, we knew there was a better way to build. We designed TrendingDays using a "Client-Side First" architecture. Unlike traditional websites that send your inputs to a remote server for processing, our hub utilizes your browser's own power. When you use our <strong>Loan Calculator</strong> or <strong>GPA Tracker</strong>, the math happens entirely on your machine. This ensures that your sensitive information never touches a database and remains strictly under your control.</p>
+
+        <h2>Why We Built This 16-Tool Suite</h2>
+        <p>TrendingDays was created to solve everyday problems with mathematical certainty. We recognized that students, small business owners, and health-conscious individuals needed a reliable "Swiss Army Knife" of digital tools. By combining <strong>16 essential utilities</strong>—ranging from financial margin analysis to athletic pace tracking—into one cohesive, ad-supported but privacy-respecting hub, we’ve created a resource that scales with your daily needs.</p>
+
+        <h2>Our Core Ethics and Community Growth</h2>
+        <p>We operate on a transparent model of <strong>Data Ethics</strong>. We believe that by providing high-quality tools for free, we can foster a community of empowered users. Unlike corporate software suites, we are independent and community-driven. Our growth is fueled by user feedback; when you suggest a new feature or report a bug, you are directly helping us improve the <strong>TrendingDays digital library</strong> for thousands of other users globally.</p>
+
+        <h2>Our Commitment to Precision</h2>
+        <p>In the world of finance and health, a single decimal point matters. That’s why every tool in our library is "SEO-Hardened" and mathematically audited. We don't just provide a result; we provide the <strong>educational context</strong> behind it. We believe that by understanding the formulas and logic behind the numbers, our users become more digitally literate and financially empowered in their personal and professional lives.</p>
+
+        <h2>Looking Toward the Future</h2>
+        <p>The digital landscape is constantly shifting, but our core values remain the same. We are committed to expanding the <strong>TrendingDays suite</strong> based on emerging technological needs. Whether we are adding advanced cryptographic generators or simple daily-life calculators, our promise remains: <strong>Fast. Free. Private.</strong></p>
+
+        <p>Thank you for choosing TrendingDays. We are proud to be a trusted part of your daily digital workflow.</p>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+</body>
+</html>

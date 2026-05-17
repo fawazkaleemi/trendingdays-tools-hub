@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - TrendingDays Tools Hub</title>
+    
+    <meta name="robots" content="noindex, follow">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & CARD LOGIC --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. LEGAL CONTENT SETTINGS --- */
+    .tool-card h1 { margin: 0; font-size: 2.2rem; color: var(--text); }
+    .tool-card h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-top: 35px; margin-bottom: 20px; font-size: 1.4rem; }
+    .tool-card p { line-height: 1.8; color: #444; margin-bottom: 15px; }
+
+    /* --- 5. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 6. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h1>Privacy Policy</h1>
+        <p style="margin-top: 15px;"><strong>Effective Date:</strong> May 2026</p>
+        <p>At <strong>TrendingDays Tools Hub</strong> (accessible via trendingdays.com), we hold your digital privacy in the highest regard. This Privacy Policy outlines the types of information we collect and how we ensure your data remains protected while using our suite of digital utilities.</p>
+
+        <h2>1. The "Zero-Data" Processing Commitment</h2>
+        <p>The core philosophy of TrendingDays is built on <strong>local execution</strong>. Unlike traditional web applications that process user data on a remote server, our tools—including the Loan Calculator, Password Generator, and BMI Tracker—utilize Client-Side JavaScript logic. This means all mathematical calculations and data inputs happen exclusively within your browser's memory. We do not transmit, store, or see your private inputs. Once you close your browser tab, the data is wiped from your local session.</p>
+
+        <h2>2. Standard Web Server Log Files</h2>
+        <p>Like all professional websites, TrendingDays utilizes standard log files provided by our secure hosting infrastructure. These logs capture non-identifying technical data, including Internet Protocol (IP) addresses, browser versions, Internet Service Providers (ISP), date/time stamps, and referring/exit pages. This information is used strictly for technical maintenance, security monitoring, and analyzing broad traffic trends to improve site performance. This data is never linked to personally identifiable information.</p>
+
+        <h2>3. Cookies and Advertising Standards</h2>
+        <p>TrendingDays uses 'cookies' to store visitor preferences and optimize your experience. Furthermore, we may partner with third-party vendors, such as <strong>Google AdSense</strong>, to serve advertisements. Google utilizes the DART cookie to serve ads based on your visit to our site and other websites on the internet. You may choose to decline the use of personalized advertising cookies by visiting the Google Ad Settings or by utilizing an "Incognito" browser mode.</p>
+
+        <h2>4. Data Protection Rights (GDPR & CCPA)</h2>
+        <p>We are committed to full compliance with global data protection regulations, including the General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA). Users have the right to request information about data collection. However, because our architecture is designed to <strong>not collect</strong> personal inputs from our tools, we do not maintain a database of your calculations, health scores, or financial records to disclose or sell.</p>
+
+        <h2>5. Third-Party Links and Security</h2>
+        <p>Our website may contain links to external sites. We advise you to review the Privacy Policy of every site you visit. While we provide a secure environment at trendingdays.com, we have no control over and assume no responsibility for the content or privacy practices of any third-party services or websites linked in our footer or tools.</p>
+
+        <h2>6. Children's Privacy</h2>
+        <p>TrendingDays does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately so we can perform the necessary steps to remove such information from our technical logs.</p>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+</body>
+</html>

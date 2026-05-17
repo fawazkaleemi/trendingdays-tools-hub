@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Margin & Markup Calculator - Business Profit Tool - TrendingDays</title>
+    <meta name="description" content="Free online margin and markup calculator. Quickly find your profit percentage and retail price. 100% private and accurate business math.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/margin-calculator/">
+    <meta property="og:title" content="Margin Calculator - Gross Profit & Markup Planner - TrendingDays">
+    <meta property="og:description" content="Calculate gross profit margins, markup percentages, and optimal selling prices instantly and privately.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Margin Calculator - Gross Profit & Markup Planner - TrendingDays">
+    <meta name="twitter:description" content="Calculate gross profit margins, markup percentages, and optimal selling prices instantly and privately.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; }
+    .bmi-score { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- RESTORED: BUSINESS GRID MATRIX & ROW CONTROLS --- */
+    .res-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .res-item {
+        background: #fff;
+        border: 1px solid #dce2f2;
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .res-item span:first-child {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 5px;
+    }
+    .res-val {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--primary);
+    }
+    @media (max-width: 500px) {
+        .res-grid { grid-template-columns: 1fr; }
+    }
+
+    /* --- 6. FOOTER --- */
+    footer { background: var(--primary); color: white; text-align: center; padding: 15px 20px; margin-top: 40px; }
+    .footer-links { margin-bottom: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+    <a href="../index.html" style="display: contents;">
+        <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+    </a>
+</div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Sales Margin & Markup Calculator</h2>
+        <p>Determine your profitability by calculating gross margin and markup percentages instantly.</p>
+        
+        <label>Cost of Goods (Cost Price):</label>
+        <input type="number" id="cost" placeholder="e.g. 50" oninput="calcBusiness()">
+        
+        <label>Selling Price (Revenue):</label>
+        <input type="number" id="revenue" placeholder="e.g. 100" oninput="calcBusiness()">
+
+        <div id="bizResults" class="result-box" style="display:none;">
+            <div class="res-grid">
+                <div class="res-item"><span>Gross Margin:</span><span id="marginVal" class="res-val"></span></div>
+                <div class="res-item"><span>Markup Percentage:</span><span id="markupVal" class="res-val"></span></div>
+                <div class="res-item"><span>Gross Profit:</span><span id="profitVal" class="res-val"></span></div>
+                <div class="res-item"><span>Cost-to-Price Ratio:</span><span id="ratioVal" class="res-val"></span></div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Profitability Analysis: How to Calculate Margin and Markup</h2>
+            <p>At <strong>TrendingDays Tools Hub</strong>, we understand that running a business requires more than just passion—it requires mathematical precision. Whether you are launching an e-commerce store or managing a local retail shop, knowing <strong>how to calculate profit margin</strong> is the difference between sustainable growth and financial struggle. Our professional calculator helps you distinguish between these two vital metrics instantly.</p>
+            
+            <h3>1. Margin vs. Markup: Understanding the Difference</h3>
+            <p>One of the most common mistakes new entrepreneurs make is confusing <strong>margin and markup</strong>. Gross Margin is the percentage of the selling price that is profit. For example, if you sell a $100 item that cost you $70, your profit is $30, and your margin is 30%. On the other hand, Markup is the percentage added to the cost price to reach the selling price. In the same scenario, your markup would be approximately 42.8%. Using our <strong>retail pricing tool</strong> ensures you never mix these two up, protecting your bottom line.</p>
+
+            <h3>2. The Formula for Gross Profit Success</h3>
+            <p>The mathematical logic behind our tool is built on industry-standard financial formulas. To <strong>find the gross margin percentage</strong>, we use: <em>((Revenue - Cost) / Revenue) * 100</em>. To find the markup, the formula is: <em>((Revenue - Cost) / Cost) * 100</em>. Accurate calculations are essential for setting competitive prices that cover overhead expenses while still generating a healthy net profit for your business.</p>
+
+            <h3>3. Managing Inventory and Pricing Strategy</h3>
+            <p>Setting the right price is a delicate balance. If your markup is too low, you may not cover your operating costs. If it’s too high, you might lose customers to competitors. A reliable <strong>business profit calculator</strong> allows you to perform "What-If" analysis—adjusting your selling price in real-time to see how it affects your overall margin. This level of strategic planning is what separates top-tier businesses from the rest.</p>
+
+            <h3>4. Why High-Precision Data Matters</h3>
+            <p>When dealing with large volumes of inventory, even a 1% discrepancy in margin can represent thousands of dollars in lost revenue. TrendingDays utilizes high-precision decimal math to provide the granular detail required for professional financial reporting. This ensures that your <strong>cost-to-price ratios</strong> are always accurate, allowing you to make data-driven decisions for your business expansion.</p>
+
+            <h3>5. Privacy for Your Business Strategy</h3>
+            <p>Your pricing strategy is a trade secret. Unlike cloud-based accounting software that tracks your financial data, the TrendingDays <strong>margin utility</strong> processes everything locally in your browser. Your costs, revenues, and profit targets are never sent to our servers. We provide the elite financial tools you need with the 100% privacy you deserve. Explore our hub for more secure, professional-grade digital utilities.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+
+<script>
+    function calcBusiness() {
+        const cost = parseFloat(document.getElementById('cost').value);
+        const rev = parseFloat(document.getElementById('revenue').value);
+        const resDiv = document.getElementById('bizResults');
+        
+        if (rev > 0 && cost >= 0) {
+            const profit = rev - cost;
+            const margin = (profit / rev) * 100;
+            const markup = (profit / cost) * 100;
+            const ratio = (cost / rev) * 100;
+            
+            resDiv.style.display = 'block';
+            document.getElementById('marginVal').innerText = margin.toFixed(2) + '%';
+            document.getElementById('markupVal').innerText = (isFinite(markup) ? markup.toFixed(2) : '0') + '%';
+            document.getElementById('profitVal').innerText = '$' + profit.toFixed(2);
+            document.getElementById('ratioVal').innerText = ratio.toFixed(2) + '%';
+        } else {
+            resDiv.style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

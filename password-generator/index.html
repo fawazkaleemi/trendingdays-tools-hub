@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator - Create Strong Random Passwords - TrendingDays</title>
+    <meta name="description" content="Generate highly secure, random passwords locally in your browser. Protect your accounts with high-entropy strings. 100% private.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/password-generator/">
+    <meta property="og:title" content="Password Generator - Strong & Secure Key Maker - TrendingDays">
+    <meta property="og:description" content="Generate highly secure, randomized passwords entirely in your browser. 100% private, client-side cryptographic defense.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Password Generator - Strong & Secure Key Maker - TrendingDays">
+    <meta name="twitter:description" content="Generate highly secure, randomized passwords entirely in your browser. 100% private, client-side cryptographic defense.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. PASSWORD GENERATOR SPECIFIC FIXES --- */
+    .pass-display {
+        background: #eef2ff;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--primary);
+        word-break: break-all;
+        text-align: center;
+        margin: 20px 0;
+        border: 2px dashed var(--primary);
+    }
+
+    .settings {
+        background: #f9fbff;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        border: 1px solid #e0e4f2;
+    }
+
+    .settings label {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px;
+        margin-top: 12px !important;
+        cursor: pointer;
+        font-weight: 500;
+        color: #444;
+    }
+
+    .settings input[type="checkbox"] {
+        width: 20px !important;
+        height: 20px !important;
+        margin: 0 !important;
+        flex-shrink: 0;
+    }
+
+    .settings input[type="number"] {
+        width: 80px;
+        padding: 8px;
+        margin-left: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* --- 5. GLOBAL BUTTONS --- */
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 6. CONTENT SECTION (400+ WORDS) --- */
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+    .content-section h3 { color: var(--primary); margin-top: 25px; }
+    .content-section ul { padding-left: 20px; }
+
+    /* --- 7. FOOTER --- */
+    footer { 
+    background: var(--primary); 
+    color: white; 
+    text-align: center; 
+    padding: 15px 20px; 
+    margin-top: 40px; 
+}
+.footer-links { 
+    margin-bottom: 5px; 
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 15px; 
+}
+.footer-links a { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 0.85rem; /* This is the missing piece! */
+}
+
+    /* --- 8. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="tool-card">
+        <h2>Secure Password Generator</h2>
+        <p>Enhance your digital security by generating complex, random passwords locally on your device.</p>
+        
+        <div id="passwordResult" class="pass-display">Click Generate Below</div>
+        
+        <div class="settings">
+            <label>Length: <input type="number" id="length" value="16" min="8" max="50"></label>
+            <label><input type="checkbox" id="upper" checked> Include Uppercase (A-Z)</label>
+            <label><input type="checkbox" id="lower" checked> Include Lowercase (a-z)</label>
+            <label><input type="checkbox" id="number" checked> Include Numbers (0-9)</label>
+            <label><input type="checkbox" id="symbol" checked> Include Symbols (!@#$)</label>
+        </div>
+        
+        <button onclick="generatePassword()">Generate Secure Password</button>
+
+        <div class="content-section">
+            <h2>Why Use a Random Password Generator?</h2>
+            <p>In 2026, cyber-attacks are more sophisticated than ever. The <strong>TrendingDays Secure Password Generator</strong> helps you stay ahead by creating strings with <strong>high entropy</strong>. High entropy means the password has a high level of unpredictability, making it statistically impossible for automated <strong>brute-force scripts</strong> to guess your credentials.</p>
+            
+            <h3>1. The Anatomy of an Unbreakable Password</h3>
+            <p>What makes a password strong? It's a combination of <strong>Length and Character Diversity</strong>. A 16-character password that uses a mix of uppercase, lowercase, numbers, and symbols creates trillions of possible combinations. By avoiding dictionary words (names, birthdays, common phrases), you protect yourself against <strong>dictionary attacks</strong>, where hackers use lists of common words to breach accounts.</p>
+
+            <h3>2. Debunking Common Password Myths</h3>
+            <p>Many users still believe that replacing an 'a' with an '@' makes a password secure. In reality, modern hacking software is programmed to anticipate these common substitutions. To truly stay safe, you need <strong>randomness</strong>. Random strings, like those generated by our tool, do not follow human patterns, which is exactly what makes them so difficult for AI-driven hacking tools to predict.</p>
+
+            <h3>3. Client-Side Security: No Data Transmission</h3>
+            <p>Most "Big Tech" password tools process your data on their servers. <em>TrendingDays</em> takes a different approach. This tool uses <strong>Client-Side JavaScript</strong> logic. This means the randomizing happens entirely within your own computer's RAM. Your password is never sent over the internet, and it is never stored in our database. This "zero-knowledge" architecture is the gold standard for privacy-conscious users.</p>
+
+            <h3>4. Best Practices for Cybersecurity</h3>
+            <ul>
+                <li><strong>Enable Multi-Factor Authentication (MFA):</strong> A strong password is your first line of defense, but MFA is your second. Always use both for sensitive accounts like banking or email.</li>
+                <li><strong>Avoid Password Reuse:</strong> If one site has a data breach, hackers will try that same password on every other major platform. Using a unique password for every site prevents this <strong>credential stuffing</strong>.</li>
+                <li><strong>Use a Password Manager:</strong> Since it's impossible to remember 20 complex passwords, we recommend using an encrypted password manager to store the strings you generate here.</li>
+            </ul>
+
+            <h3>5. Understanding Entropy and Brute Force</h3>
+            <p>A "Brute Force" attack is when a computer program tries millions of combinations per second to guess your login. A simple 8-character password can be cracked in minutes. However, adding just a few more characters and a symbol increases the time required to <strong>thousands of years</strong>. Our generator ensures your security is future-proofed against these automated threats.</p>
+
+            <h3>6. Why TrendingDays is Different</h3>
+            <p>We built the TrendingDays Hub to provide essential digital utilities without the clutter of traditional tech sites. By focusing on <strong>Long-Tail SEO value</strong> and high-utility code, we provide a clean environment for you to manage your digital life safely. This tool is optimized for speed, accessibility, and most importantly, your privacy.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+
+<script>
+    function generatePassword() {
+        const length = +document.getElementById('length').value;
+        const types = [
+            { id: 'upper', chars: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' },
+            { id: 'lower', chars: 'abcdefghijklmnopqrstuvwxyz' },
+            { id: 'number', chars: '0123456789' },
+            { id: 'symbol', chars: '!@#$%^&*()_+=-{}[]|:;<>,.?/' }
+        ];
+        
+        let charPool = '';
+        let passwordArr = [];
+        
+        types.forEach(type => {
+            if(document.getElementById(type.id).checked) {
+                charPool += type.chars;
+                passwordArr.push(type.chars[Math.floor(Math.random() * type.chars.length)]);
+            }
+        });
+        
+        if(charPool === '') return alert('Please select at least one character type!');
+        
+        while(passwordArr.length < length) {
+            passwordArr.push(charPool[Math.floor(Math.random() * charPool.length)]);
+        }
+        
+        const finalPassword = passwordArr.sort(() => Math.random() - 0.5).join('');
+        document.getElementById('passwordResult').innerText = finalPassword;
+    }
+</script>
+</body>
+</html>

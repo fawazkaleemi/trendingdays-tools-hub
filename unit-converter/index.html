@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal Unit Converter - Length, Weight & Temperature - TrendingDays</title>
+    <meta name="description" content="Quickly convert between Metric and Imperial units for length, weight, and temperature. Accurate and private tool by TrendingDays Tools Hub.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/unit-converter/">
+    <meta property="og:title" content="Unit Converter - Universal Measurement Conversion Hub - TrendingDays">
+    <meta property="og:description" content="Convert length, weight, temperature, and volume across standard and metric systems instantly. 100% private.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Unit Converter - Universal Measurement Conversion Hub - TrendingDays">
+    <meta name="twitter:description" content="Convert length, weight, temperature, and volume across standard and metric systems instantly. 100% private.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS & INTERACTIVE GRID --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    
+    input, select { 
+        width: 100%; 
+        padding: 12px; 
+        border: 2px solid #e0e4f2; 
+        border-radius: 8px; 
+        margin: 10px 0 20px; 
+        font-size: 1.1rem; 
+        box-sizing: border-box; 
+        transition: 0.3s; 
+        background: white;
+        color: var(--text);
+    }
+    
+    /* RESTORED: Side-by-side positioning styles */
+    .converter-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    /* RESTORED: Output Display Card styles */
+    .result-display { 
+        background: #eef2ff; 
+        padding: 25px; 
+        margin-top: 10px; 
+        border-radius: 10px; 
+        text-align: center; 
+        border: 2px solid #dce2f2; 
+        color: var(--primary);
+    }
+    .result-display span { font-size: 1rem; font-weight: 600; opacity: 0.8; }
+    .result-display strong { font-size: 2.4rem; display: block; margin-top: 8px; font-weight: 800; word-break: break-all; }
+
+    /* --- 5. CONTENT SECTION --- */
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+    .content-section h3 { color: var(--primary); margin-top: 25px; }
+    .content-section ul { padding-left: 20px; }
+
+    /* --- 6. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+        .converter-grid { grid-template-columns: 1fr; gap: 0; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Universal Unit Converter</h2>
+        <p>Convert measurements between Metric and Imperial systems instantly for length, weight, and temperature.</p>
+        <div class="converter-grid">
+            <div>
+                <label>Value to Convert:</label>
+                <input type="number" id="inputValue" placeholder="Enter number" oninput="convert()">
+            </div>
+            <div>
+                <label>Conversion Type:</label>
+                <select id="unitType" onchange="convert()">
+                    <optgroup label="Length & Distance">
+                        <option value="km-mi">Kilometers to Miles</option>
+                        <option value="mi-km">Miles to Kilometers</option>
+                        <option value="cm-in">Centimeters to Inches</option>
+                        <option value="in-cm">Inches to Centimeters</option>
+                    </optgroup>
+                    <optgroup label="Weight & Mass">
+                        <option value="kg-lb">Kilograms to Pounds</option>
+                        <option value="lb-kg">Pounds to Kilograms</option>
+                    </optgroup>
+                    <optgroup label="Temperature">
+                        <option value="c-f">Celsius to Fahrenheit</option>
+                        <option value="f-c">Fahrenheit to Celsius</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="result-display"><span>Calculated Result:</span><strong id="outputValue">0</strong></div>
+        <div class="content-section">
+            <h2>The Critical Role of Accurate Unit Conversion</h2>
+            <p>In our interconnected world, switching between the <strong>Metric System</strong> and the <strong>Imperial System</strong> is a fundamental necessity. Whether you are adjusting a thermostat in a foreign country, converting recipe weights, or calculating travel distances, the <em>TrendingDays Unit Converter</em> provides the precision required for daily life.</p>
+            
+            <h3>1. Temperature Logic: Celsius vs. Fahrenheit</h3>
+            <p>Unlike length or weight, which use simple multiplication, <strong>temperature conversion</strong> requires a specific algebraic formula. To convert Celsius to Fahrenheit, you must multiply by 1.8 and add 32. This non-linear relationship often confuses travelers and science students. Our tool automates this complex math, providing instant results for weather, cooking, or scientific study.</p>
+
+            <h3>2. Common Conversion Benchmarks</h3>
+            <p>To help you visualize these measurements, here are some common reference points used globally:</p>
+            <ul>
+                <li><strong>Freezing Point:</strong> 0°C is equal to 32°F.</li>
+                <li><strong>Room Temperature:</strong> Approximately 20°C is equal to 68°F.</li>
+                <li><strong>A Mile:</strong> 1 Mile is approximately 1.61 Kilometers.</li>
+                <li><strong>An Inch:</strong> 1 Inch is exactly 2.54 Centimeters.</li>
+                <li><strong>A Kilogram:</strong> 1 kg is roughly the weight of a liter of water, or 2.2 pounds.</li>
+            </ul>
+
+            <h3>3. High-Precision Standards for Professional Use</h3>
+            <p>In fields like carpentry, logistics, or aviation, a small rounding error can be disastrous. We utilize <strong>high-precision constants</strong>—such as the exact 2.54cm per inch standard—to ensure that our length and distance conversions are reliable enough for professional DIY projects and academic research. We display results up to three decimal places to provide the granular detail required for precise measurements.</p>
+
+            <h3>4. Why Unit Converters are Essential for Education</h3>
+            <p>Students frequently search for "km to miles" or "kg to lbs" to check their physics or chemistry homework. By providing clear, easy-to-read results alongside educational content about <em>why</em> these units differ, TrendingDays serves as both a utility and a learning resource. This dual-purpose approach is what separates a high-quality "Authority" site from a basic calculator.</p>
+
+            <h3>5. Strategic Advantage for Global Travelers</h3>
+            <p>If you are traveling from the United States to Europe or Asia, you will encounter the Metric system in everything from speed limits to grocery prices. Understanding that a 100 km/h speed limit is roughly 62 mph can prevent traffic fines and help you navigate safely. Using a reliable <strong>universal converter</strong> ensures you are never "lost in translation" when it comes to vital numbers.</p>
+
+            <h3>6. Privacy-First Technology at TrendingDays</h3>
+            <p>Your search for "unit conversion" should not result in you being tracked by advertisers. Like all tools in the <strong>TrendingDays Hub</strong>, this converter runs entirely via <strong>Client-Side JavaScript</strong>. Your inputs never leave your computer, and no data is sent to our servers. We believe in providing fast, free, and completely private tools for the modern web user.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        © 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.
+    </div>
+</footer>
+<script>
+    function convert() {
+        const val = parseFloat(document.getElementById('inputValue').value);
+        const type = document.getElementById('unitType').value;
+        const out = document.getElementById('outputValue');
+        if (isNaN(val)) { out.innerText = "0"; return; }
+        let result = 0;
+        switch(type) {
+            case 'km-mi': result = val * 0.621371; break;
+            case 'mi-km': result = val / 0.621371; break;
+            case 'kg-lb': result = val * 2.20462; break;
+            case 'lb-kg': result = val / 2.20462; break;
+            case 'cm-in': result = val / 2.54; break;
+            case 'in-cm': result = val * 2.54; break;
+            case 'c-f': result = (val * 1.8) + 32; break;
+            case 'f-c': result = (val - 32) / 1.8; break;
+        }
+        out.innerText = result.toFixed(3);
+    }
+</script>
+</body>
+</html>

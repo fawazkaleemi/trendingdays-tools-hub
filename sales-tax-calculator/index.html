@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Tax Calculator - Calculate Tax & Total Price - TrendingDays</title>
+    <meta name="description" content="Free online sales tax calculator. Easily find the tax amount and total price for any purchase. 100% private and accurate calculation.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/sales-tax-calculator/">
+    <meta property="og:title" content="Sales Tax Calculator - Quick Tax & Total Price Math - TrendingDays">
+    <meta property="og:description" content="Calculate net prices, sales tax additions, and final consumer costs instantly. 100% secure and private.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sales Tax Calculator - Quick Tax & Total Price Math - TrendingDays">
+    <meta name="twitter:description" content="Calculate net prices, sales tax additions, and final consumer costs instantly. 100% secure and private.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; }
+    .bmi-score { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- RESTORED: TAX RESULT ROWS --- */
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #dce2f2;
+        font-size: 1.2rem;
+    }
+    .result-item:last-child {
+        border-bottom: none;
+    }
+    .result-item span {
+        font-weight: 600;
+        color: #555;
+    }
+    .result-item strong {
+        font-size: 1.4rem;
+    }
+
+    /* --- 6. FOOTER --- */
+    footer { background: var(--primary); color: white; text-align: center; padding: 15px 20px; margin-top: 40px; }
+    .footer-links { margin-bottom: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+    <a href="../index.html" style="display: contents;">
+        <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+    </a>
+</div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Sales Tax Calculator</h2>
+        <p>Quickly determine the tax amount and the final total for any item or service.</p>
+        
+        <label>Net Price (Before Tax)</label>
+        <input type="number" id="netPrice" placeholder="e.g. 50" oninput="calculateTax()">
+        
+        <label>Tax Rate (%)</label>
+        <input type="number" id="taxRate" placeholder="e.g. 7.5" oninput="calculateTax()">
+
+        <div id="taxResults" class="result-box" style="display:none;">
+            <div class="result-item"><span>Tax Amount:</span> <strong id="taxAmount" style="color:#d9534f;"></strong></div>
+            <div class="result-item"><span>Gross Price (Total):</span> <strong id="grossPrice" style="color:var(--primary);"></strong></div>
+        </div>
+
+        <div class="content-section">
+            <h2>Financial Accuracy: How to Calculate Sales Tax Online</h2>
+            <p>Whether you are a small business owner, a freelancer, or a conscious consumer, knowing <strong>how to calculate sales tax</strong> is a fundamental part of managing your finances. At <em>TrendingDays Tools Hub</em>, we’ve built this high-precision calculator to help you determine the final cost of goods and services across different tax jurisdictions with total ease.</p>
+            
+            <h3>1. The Formula for Tax-Inclusive Pricing</h3>
+            <p>The mathematical process to <strong>find the sales tax amount</strong> is straightforward: (Net Price) x (Tax Rate / 100). Once you have that figure, you simply add it back to the original net price to get your gross total. While this sounds simple, things get complicated when dealing with fractional tax rates like 8.875% or when trying to "reverse" the tax from a total. Our tool handles these decimals to ensure 100% accuracy.</p>
+
+            <h3>2. Why Sales Tax Varies Globally</h3>
+            <p>Sales tax (often referred to as VAT or GST in other countries) is an indirect tax regulated by local and national governments. In the United States, for example, rates change based on your state, county, and sometimes even your specific city. Using a <strong>reliable tax calculator</strong> allows you to verify that you are being charged correctly, which is especially important during interstate travel or online shopping from various vendors.</p>
+
+            <h3>3. Managing Business Expenses and Re-billing</h3>
+            <p>For entrepreneurs and contractors, calculating the <strong>total price including tax</strong> is a daily task. When billing clients for reimbursed expenses, you must ensure the tax amounts are perfectly aligned with your receipts. Our tool provides a clean, clear breakdown that you can use to double-check your invoices, helping you maintain professional standards in your financial reporting and personal bookkeeping.</p>
+
+            <h3>4. Strategic Budgeting for Large Purchases</h3>
+            <p>When buying high-ticket items like electronics, furniture, or vehicles, the sales tax can add hundreds of dollars to the final bill. Using an <strong>online tax estimator</strong> before you hit the "Buy" button helps you avoid "sticker shock" and ensures your budget can handle the total out-of-pocket cost. This level of preparation is a hallmark of smart financial planning.</p>
+
+            <h3>5. Privacy and Security at TrendingDays</h3>
+            <p>We believe that your financial calculations are personal. Unlike corporate tax software that might track your spending habits or store your data on their servers, the TrendingDays <strong>sales tax utility</strong> processes everything locally in your browser. No data is transmitted or stored, giving you the freedom to plan your finances in a secure, private environment. Explore our growing library for more privacy-focused digital utilities.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+<script>
+    function calculateTax() {
+        const price = parseFloat(document.getElementById('netPrice').value);
+        const rate = parseFloat(document.getElementById('taxRate').value);
+        if (price && rate >= 0) {
+            const tax = (price * rate) / 100;
+            const total = price + tax;
+            document.getElementById('taxResults').style.display = 'block';
+            document.getElementById('taxAmount').innerText = '$' + tax.toFixed(2);
+            document.getElementById('grossPrice').innerText = '$' + total.toFixed(2);
+        } else {
+            document.getElementById('taxResults').style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>

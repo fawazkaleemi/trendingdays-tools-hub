@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator - Calculate Sale Prices & Savings - TrendingDays</title>
+    <meta name="description" content="Free online discount calculator. Instantly find the sale price, amount saved, and final cost after taxes. 100% private and accurate.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/discount-calculator/">
+    <meta property="og:title" content="Discount Calculator - Final Sale Price Planner - TrendingDays">
+    <meta property="og:description" content="Calculate your exact shopping savings and final sale prices with sales tax instantly. 100% private.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Discount Calculator - Final Sale Price Planner - TrendingDays">
+    <meta name="twitter:description" content="Calculate your exact shopping savings and final sale prices with sales tax instantly. 100% private.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; position: relative; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- MOBILE RESULTS BANNER CUE --- */
+    .mobile-view-btn {
+        display: none;
+        background: #28a745;
+        color: white;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border-radius: 20px;
+        margin: 5px auto 15px;
+        cursor: pointer;
+        width: fit-content;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        animation: subtleBounce 2s infinite;
+    }
+
+    @keyframes subtleBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+
+    /* --- RESTORED: DISCOUNT RESULT ROWS --- */
+    .result-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #dce2f2;
+        font-size: 1.2rem;
+    }
+    .result-item:last-child {
+        border-bottom: none;
+    }
+    .result-item span {
+        font-weight: 600;
+        color: #555;
+    }
+    .result-item strong {
+        font-size: 1.4rem;
+    }
+
+    /* --- 6. FOOTER --- */
+    footer { background: var(--primary); color: white; text-align: center; padding: 15px 20px; margin-top: 40px; }
+    .footer-links { margin-bottom: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        /* Matches age-calculator completely 1-to-1 */
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+
+        /* Compact inputs and layout scaling settings for mobile viewports */
+        .container { padding: 0 10px; margin: 15px auto; }
+        .tool-card { padding: 20px; }
+        label { margin-top: 12px; font-size: 0.95rem; }
+        input { padding: 10px; font-size: 1rem; margin: 6px 0 12px; }
+
+        .mobile-view-btn { display: block; }
+
+        .result-box { 
+            margin-top: 15px; 
+            padding: 15px; 
+        }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+    <a href="../index.html" style="display: contents;">
+        <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+    </a>
+</div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Smart Discount Calculator</h2>
+        <p>Quickly find out how much you save and what the final price is during any sale.</p>
+        
+        <label>Original Price ($)</label>
+        <input type="number" id="originalPrice" placeholder="e.g. 100" oninput="calculateDiscount()">
+        
+        <label>Discount Percentage (%)</label>
+        <input type="number" id="discountPercent" placeholder="e.g. 20" oninput="calculateDiscount()">
+        
+        <label>Sales Tax (Optional %)</label>
+        <input type="number" id="salesTax" placeholder="e.g. 8" oninput="calculateDiscount()">
+
+        <div id="mobileScrollCue" class="mobile-view-btn" style="display: none;" onclick="scrollToDiscountResults()">📊 Tap to View Results Below</div>
+
+        <div id="discountResults" class="result-box" style="display:none;">
+            <div class="result-item"><span>Sale Price:</span> <strong id="salePrice" style="color:var(--primary);"></strong></div>
+            <div class="result-item"><span>You Save:</span> <strong id="moneySaved" style="color:#28a745;"></strong></div>
+            <div class="result-item"><span>Total (With Tax):</span> <strong id="finalTotal"></strong></div>
+        </div>
+
+        <div class="content-section">
+            <h2>The Smart Shopper's Guide: How to Calculate Discount Price</h2>
+            <p>During major retail events like Black Friday or seasonal clearance sales, knowing <strong>how to calculate discount price</strong> is vital for maintaining your budget. At <em>TrendingDays Tools Hub</em>, we’ve developed this intuitive <strong>sale price calculator</strong> to help you strip away the marketing fluff and see the real numbers before you reach the checkout counter.</p>
+            
+            <h3>1. The Formula Behind the Savings</h3>
+            <p>The basic <strong>percentage off formula</strong> is quite simple: (Original Price) x (Discount Percentage / 100). The result is the amount of money you save. To find the final sale price, you subtract that savings from the original price. Our tool goes a step further by allowing you to add local sales tax, giving you the most accurate final "out-of-pocket" cost possible. This ensures that you aren't surprised by the total when the cashier scans your items.</p>
+
+            <h3>2. Understanding the Psychology of Sales</h3>
+            <p>Retailers often use "Charm Pricing" (prices ending in .99) combined with massive percentage signs to create a sense of urgency. Often, we feel like we are saving more than we actually are. By using a <strong>price reduction tool</strong>, you can ground yourself in reality. Seeing the actual dollar amount saved—rather than just a percentage—helps you decide if the purchase is truly a bargain or just a clever marketing tactic designed to trigger impulsive spending.</p>
+
+            <h3>3. Strategic Shopping: Discounts and Tax</h3>
+            <p>Many people forget that sales tax is applied <em>after</em> the discount in most regions. This means your tax burden is lower when you buy items on sale! Our <strong>discount and tax calculator</strong> handles this order of operations perfectly, providing a clear breakdown of the base price, the amount saved, and the final total including the tax man's share. This level of detail is essential for accurate personal bookkeeping and monthly budget tracking.</p>
+
+            <h3>4. How to Handle Stacked Discounts</h3>
+            <p>A common marketing trick is "stacking" discounts—for example, a 20% storewide sale plus an extra 10% coupon for members. It is important to realize these aren't usually additive (they don't equal 30%). Usually, the second discount is applied to the already reduced price. Our <strong>savings calculator</strong> helps you navigate these layers of complexity, ensuring you understand exactly how much "real-world" value you are getting from every coupon code or membership perk.</p>
+
+            <h3>5. Privacy-First Utility from TrendingDays</h3>
+            <p>Your shopping habits are your private business. Unlike retail apps that track your location and browsing history to serve you targeted ads, the TrendingDays <strong>price reduction tool</strong> runs entirely in your browser using local logic. We do not store your data, track what you are buying, or share your financial planning with third parties. We simply provide the math you need for a smarter, more secure digital life. Explore our hub for more privacy-focused utilities designed for high-precision everyday use.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+<script>
+    function calculateDiscount() {
+        const price = parseFloat(document.getElementById('originalPrice').value);
+        const disc = parseFloat(document.getElementById('discountPercent').value);
+        const tax = parseFloat(document.getElementById('salesTax').value) || 0;
+        
+        if (price && disc >= 0) {
+            const saved = (price * disc) / 100;
+            const sale = price - saved;
+            const taxAmount = (sale * tax) / 100;
+            const total = sale + taxAmount;
+            
+            document.getElementById('discountResults').style.display = 'block';
+            document.getElementById('salePrice').innerText = '$' + sale.toFixed(2);
+            document.getElementById('moneySaved').innerText = '$' + saved.toFixed(2);
+            document.getElementById('finalTotal').innerText = '$' + total.toFixed(2);
+
+            if(window.innerWidth <= 600) {
+                document.getElementById('mobileScrollCue').style.display = 'block';
+            }
+        } else {
+            document.getElementById('discountResults').style.display = 'none';
+            document.getElementById('mobileScrollCue').style.display = 'none';
+        }
+    }
+
+    function scrollToDiscountResults() {
+        document.getElementById('discountResults').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

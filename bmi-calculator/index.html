@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator - Find Your Healthy Weight Range - TrendingDays</title>
+    <meta name="description" content="Calculate your BMI with our free and private tool. Discover your healthy weight range and learn how to interpret BMI results accurately.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/bmi-calculator/">
+    <meta property="og:title" content="BMI Calculator - Healthy Weight Tracker - TrendingDays">
+    <meta property="og:description" content="Calculate your Body Mass Index (BMI) and healthy weight ranges instantly. 100% private, browser-based health math.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BMI Calculator - Healthy Weight Tracker - TrendingDays">
+    <meta name="twitter:description" content="Calculate your Body Mass Index (BMI) and healthy weight ranges instantly. 100% private, browser-based health math.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; }
+    .bmi-score { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin: 10px 0; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- 6. FOOTER --- */
+    footer { background: var(--primary); color: white; text-align: center; padding: 15px 20px; margin-top: 40px; }
+    .footer-links { margin-bottom: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        /* Compress the header spacing */
+        .header-container { flex-direction: column; text-align: center; padding: 5px 10px; }
+        .logo-wrapper { width: 130px; height: 50px; margin-bottom: 5px; }
+        .brand-content h1 { font-size: 1.2rem; }
+        .brand-tagline { display: none; } /* Clear vertical space by hiding the tagline on mobile */
+
+        /* Pull the main card upward */
+        .container { padding: 0 10px; margin: 10px auto; }
+        .calc-card { padding: 15px; margin-bottom: 12px; }
+        .calc-card h2 { font-size: 1.25rem; margin-bottom: 12px; padding-bottom: 6px; }
+        
+        /* Tighten input fields gaps */
+        .form-group { margin-bottom: 10px; }
+        label { font-size: 0.85rem; margin-bottom: 3px; }
+        input, select { padding: 8px 10px; font-size: 0.95rem; }
+
+        /* Make sure the result panel stands out clearly at the bottom edge */
+        .result-panel { 
+            margin-top: 12px; 
+            padding: 12px; 
+            border-left: 5px solid var(--primary);
+            background: #f0f7ff; /* Highlight background so it catches their eye instantly */
+        }
+    }
+</style>
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+        <a href="../index.html" style="display: contents;">
+            <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+        </a>
+    </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="tool-card">
+        <h2>BMI (Body Mass Index) Calculator</h2>
+        <p>Your privacy matters. Height and weight data stays within your browser and is never stored.</p>
+        
+        <label>Weight (kg):</label>
+        <input type="number" id="weight" placeholder="e.g. 70">
+        
+        <label>Height (cm):</label>
+        <input type="number" id="height" placeholder="e.g. 175">
+        
+        <button onclick="calculateBMI()">Calculate BMI Now</button>
+        
+        <div id="results" class="result-box" style="display:none;">
+            <div>Your BMI Score:</div>
+            <div id="bmiValue" class="bmi-score"></div>
+            <div id="bmiStatus" style="font-weight:700; font-size:1.2rem;"></div>
+        </div>
+
+        <div class="content-section">
+            <h2>How to Find Your Healthy Weight Range for Height</h2>
+            <p>Determining a <strong>healthy weight range for height</strong> is a primary step in any wellness journey. The <strong>Body Mass Index (BMI)</strong> is a globally recognized formula used by the World Health Organization (WHO) and healthcare providers to screen for weight categories that might lead to health complications like hypertension, metabolic syndrome, or type 2 diabetes.</p>
+            
+            <h3>1. Understanding the BMI Formula for Adults</h3>
+            <p>The standard <strong>BMI formula for adults</strong> is calculated by dividing weight in kilograms by the square of height in meters ($kg/m^2$). While it doesn't measure body fat directly, it is a highly correlated screening tool. It provides a baseline to see if your body mass is proportionate to your skeletal frame, helping you identify if you are in a high-risk category for weight-related illnesses.</p>
+
+            <h3>2. How to Interpret BMI Results Correctly</h3>
+            <p>Once you <strong>calculate your BMI</strong> using our tool, your score will fall into one of these standardized clinical categories:</p>
+            <ul>
+                <li><strong>Underweight (Below 18.5):</strong> This may indicate nutritional deficiencies or a need for a higher caloric intake.</li>
+                <li><strong>Normal Weight (18.5 – 24.9):</strong> This range is associated with the lowest risk for chronic diseases and indicates a healthy balance.</li>
+                <li><strong>Overweight (25.0 – 29.9):</strong> Being in this category may increase the risk of cardiovascular stress and joint issues.</li>
+                <li><strong>Obese (30.0 or higher):</strong> This range is linked to a significantly higher risk of chronic health conditions like sleep apnea and heart disease.</li>
+            </ul>
+
+            <h3>3. Important BMI Limitations for Athletes and Seniors</h3>
+            <p>Is BMI always accurate? Not necessarily. It has <strong>limitations for athletes</strong> with high muscle mass, as muscle tissue is denser than fat. A "High BMI" in a bodybuilder does not necessarily mean they are unhealthy. Similarly, for seniors, a slightly higher BMI can provide a protective "buffer" against frailty. Always consult with a medical professional for a comprehensive health assessment before making major lifestyle changes.</p>
+
+            <h3>4. Tips for Accurate Body Measurement</h3>
+            <p>To ensure your BMI reading is as accurate as possible, try to weigh yourself in the morning on a flat, hard surface. Height should be measured without shoes, standing straight against a wall. Consistency in these measurements allows you to track your metabolic health progress more effectively over time.</p>
+
+            <h3>5. Privacy-First Health Tools at TrendingDays</h3>
+            <p>At <em>TrendingDays</em>, your health data is your own. Unlike many other health portals, we don't ask for your name, email, or personal details. You get <strong>accurate health calculations</strong> without the privacy risk. Our "Smart Multi-Tool Hub" is dedicated to providing high-utility, fast, and secure digital utilities for everyone.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+
+<script>
+    function calculateBMI() {
+        const w = parseFloat(document.getElementById('weight').value);
+        const h = parseFloat(document.getElementById('height').value) / 100;
+        if (w && h) {
+            const bmi = (w / (h * h)).toFixed(1);
+            const resDiv = document.getElementById('results');
+            resDiv.style.display = 'block';
+            document.getElementById('bmiValue').innerText = bmi;
+            
+            let status = "";
+            if (bmi < 18.5) status = "Underweight";
+            else if (bmi < 25) status = "Normal weight";
+            else if (bmi < 30) status = "Overweight";
+            else status = "Obese";
+            
+            document.getElementById('bmiStatus').innerText = "Category: " + status;
+        } else {
+            alert("Please enter valid weight and height");
+        }
+    }
+</script>
+</body>
+</html>

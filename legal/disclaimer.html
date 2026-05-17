@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - TrendingDays Tools Hub</title>
+    
+    <meta name="robots" content="noindex, follow">
+    
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & CARD LOGIC --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. LEGAL DISCLAIMER SYSTEM CUSTOM SETTINGS --- */
+    .tool-card h1 { margin: 0; font-size: 2.2rem; color: var(--text); }
+    .tool-card h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-top: 35px; margin-bottom: 20px; font-size: 1.4rem; }
+    .tool-card p { line-height: 1.8; color: #444; margin-bottom: 15px; }
+    .alert-box { background: #fff9e6; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin: 20px 0; color: #856404; font-weight: 600; line-height: 1.8; }
+
+    /* --- 5. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 6. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h1>Legal Disclaimer</h1>
+        <p style="margin-top: 15px;"><strong>Last Updated:</strong> May 2026</p>
+        
+        <div class="alert-box">
+            The information provided by TrendingDays Tools Hub is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind.
+        </div>
+
+        <h2>1. Not Professional Advice</h2>
+        <p>The tools and calculators provided by <strong>TrendingDays</strong> (including but not limited to the Loan Calculator, BMI Calculator, and Margin Calculator) are intended to provide estimates based on user-provided data. This information does not constitute professional, financial, medical, or legal advice. You should always consult with a qualified professional (such as a financial advisor, doctor, or attorney) before making significant life or business decisions based on these results.</p>
+
+        <h2>2. Accuracy of Mathematical Results</h2>
+        <p>While our engineering team strives for 100% precision in our Client-Side JavaScript logic, the digital nature of the web means that errors can occur. <strong>TrendingDays</strong> does not warrant that the results generated by our digital utilities are accurate, complete, or reliable. Any reliance you place on such information is therefore strictly at your own risk. We are not responsible for any financial loss or personal injury resulting from the use of our tools.</p>
+
+        <h2>3. External Links Disclaimer</h2>
+        <p>TrendingDays.com may contain links to third-party websites or content. Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, or completeness by us. We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through our hub or any website or feature linked in any banner or other advertising.</p>
+
+        <h2>4. Errors and Omissions Disclaimer</h2>
+        <p>While we have made every attempt to ensure that the information contained in this site has been obtained from reliable sources, TrendingDays is not responsible for any errors or omissions, or for the results obtained from the use of this information. All information in this site is provided "as is", with no guarantee of completeness, accuracy, timeliness or of the results obtained from the use of this information.</p>
+
+        <h2>5. "Use at Your Own Risk" Disclaimer</h2>
+        <p>In no event will TrendingDays, its related partnerships, or the owners thereof, be liable to you or anyone else for any decision made or action taken in reliance on the information given by our tools or for any consequential, special or similar damages, even if advised of the possibility of such damages. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+</body>
+</html>

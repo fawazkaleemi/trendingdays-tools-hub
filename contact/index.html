@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TrendingDays Tools Hub</title>
+    <meta name="description" content="Get in touch with the TrendingDays team. We value your feedback, tool suggestions, and collaboration ideas.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/contact/">
+    <meta property="og:title" content="Contact Us - TrendingDays Tools Hub">
+    <meta property="og:description" content="Get in touch with the TrendingDays team. Have feedback, tool suggestions, or questions? Reach out today.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact Us - TrendingDays Tools Hub">
+    <meta name="twitter:description" content="Get in touch with the TrendingDays team. Have feedback, tool suggestions, or questions? Reach out today.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. CONTACT US CUSTOM PANEL SETTINGS --- */
+    .tool-card h1 { margin: 0; font-size: 2.2rem; color: var(--text); }
+    .tool-card h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-top: 35px; margin-bottom: 20px; }
+    .tool-card p { line-height: 1.8; color: #444; }
+    .contact-method { background: #f4f6fc; padding: 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid var(--primary); text-align: center; color: #444; line-height: 1.8; }
+    .contact-method strong { color: var(--primary); font-size: 1.2rem; display: block; margin-bottom: 5px; }
+
+    /* --- 5. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 6. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub - Contact Us</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h1>Contact Us</h1>
+        <h2>We’d Love to Hear From You!</h2>
+        <p>Whether you have feedback, questions, or new ideas, our team at <strong>TrendingDays Tools Hub</strong> is always ready to help. We believe that open communication with our users is the cornerstone of a successful digital resource. Every message we receive helps us make our suite of 16 online calculators and converters more accurate, faster, and easier to use for everyone globally.</p>
+        
+        <div class="contact-method">
+            <strong>Direct Support & Inquiry Line</strong>
+            Email: <a href="mailto:editor@trendingdays.com" style="color:var(--primary); font-weight:700; text-decoration:none;">editor@trendingdays.com</a>
+        </div>
+
+        <h2>Why Your Feedback Matters</h2>
+        <p>If you’ve noticed a technical bug, want to suggest a new precision feature, or simply wish to share how you use our tools in your daily life, don’t hesitate to reach out. We personally read and respond to all messages, ensuring that your voice is part of our development cycle. Your insights allow us to refine the mathematical logic and user interface of our <strong>privacy-first utilities</strong>, moving us closer to our goal of being the internet’s most trusted multi-tool hub.</p>
+
+        <h2>Collaborations and Global Partnerships</h2>
+        <p>We also welcome collaboration and partnership inquiries from educators, developers, and creators who believe in our mission to make digital tools free, reliable, and accessible worldwide. By working together, we can ensure that high-quality <strong>financial and educational math tools</strong> reach underserved communities. If you share our dedication to data transparency and financial literacy, we would love to discuss how we can work together to expand the TrendingDays impact.</p>
+
+        <h2>Technical Reliability and Security</h2>
+        <p>As a community-driven project, we take pride in our "ad-light" and high-performance environment. When you send us an inquiry, we treat your communication with the same <strong>strict security standards</strong> as our data-processing logic. We utilize encrypted email channels to ensure your feedback is handled safely. Your continued trust and support inspire us to keep building smarter and faster tools for everyone, without the intrusive tracking found elsewhere on the web.</p>
+
+        <h2>Our Response Commitment</h2>
+        <p>We aim to make TrendingDays Tools Hub your go-to space for free, accurate, and easy-to-use online calculators—and your suggestions make that possible. Our engineering team monitors our <strong>communication channels</strong> closely. While we strive to answer all emails within 24 to 48 hours, please allow for a slightly longer response time during peak maintenance periods or holidays. Every message is important to us, and we look forward to connecting with you.</p>
+
+        <h2>Privacy of Your Message</h2>
+        <p>In line with our <strong>Privacy Policy</strong>, your email address is used solely for the purpose of responding to your specific inquiry. We do not sell your contact information or add you to marketing lists without your explicit consent. Your trust is our most valuable asset. Thank you for being a vital part of the TrendingDays community and helping us build a more precise, private, and powerful web for everyone.</p>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+</body>
+</html>

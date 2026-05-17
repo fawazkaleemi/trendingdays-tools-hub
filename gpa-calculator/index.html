@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator - College & High School Grade Tool - TrendingDays</title>
+    <meta name="description" content="Free online GPA calculator for 4.0 scale. Quickly find your grade point average and track academic progress. 100% private and precise.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/gpa-calculator/">
+    <meta property="og:title" content="GPA Calculator - Grade Point Average Planner - TrendingDays">
+    <meta property="og:description" content="Track your academic progress on a 4.0 weighted scale. Calculate your semester or cumulative GPA instantly and privately.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GPA Calculator - Grade Point Average Planner - TrendingDays">
+    <meta name="twitter:description" content="Track your academic progress on a 4.0 weighted scale. Calculate your semester or cumulative GPA instantly and privately.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. FORM ELEMENTS & DYNAMIC ROW GRID --- */
+    label { display: block; font-weight: 600; margin-top: 15px; color: var(--primary); }
+    
+    input, select { 
+        width: 100%; 
+        padding: 12px; 
+        border: 2px solid #e0e4f2; 
+        border-radius: 8px; 
+        margin: 5px 0 15px; 
+        font-size: 1.1rem; 
+        box-sizing: border-box; 
+        transition: 0.3s; 
+        background: white;
+    }
+
+    /* RESTORED: GPA input column configuration */
+    .gpa-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 15px;
+        align-items: center;
+    }
+    .gpa-row label {
+        margin-top: 10px;
+        margin-bottom: -5px;
+    }
+
+    /* RESTORED: Add Course layout elements */
+    .btn-add {
+        background: #f4f6fc;
+        color: var(--primary);
+        border: 2px dashed #dce2f2;
+        padding: 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transition: 0.3s;
+        margin-top: 10px;
+    }
+    .btn-add:hover {
+        background: #eef2ff;
+        border-color: var(--primary);
+    }
+
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & OUTPUT CARDS --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; color: var(--primary); }
+    .result-box span { display: block; font-size: 1rem; font-weight: 600; opacity: 0.8; }
+    .res-main { font-size: 2.8rem; font-weight: 800; display: block; margin: 10px 0; }
+
+    /* --- 6. CONTENT SECTION --- */
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+    .content-section h3 { color: var(--primary); margin-top: 25px; }
+
+    /* --- 7. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 8. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        /* Matches age-calculator completely 1-to-1 */
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+
+        /* Compact elements scaling properties */
+        .container { padding: 0 10px; margin: 15px auto; }
+        .tool-card { padding: 20px; }
+        
+        .gpa-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 15px; border-bottom: 1px dashed #e0e4f2; padding-bottom: 10px; }
+        .gpa-row label { display: none; }
+        
+        input, select { padding: 10px; font-size: 1rem; margin: 4px 0 8px; }
+        .btn-add { margin-top: 5px; padding: 10px; font-size: 1rem; }
+        
+        .result-box { margin-top: 15px; padding: 15px; }
+        .res-main { font-size: 2.2rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Professional GPA Calculator</h2>
+        <p>Calculate your semester GPA on a standard 4.0 scale. Add your courses and credits below.</p>
+        
+        <div id="courseList">
+            <div class="gpa-row">
+                <label>Course Name</label>
+                <label>Grade</label>
+                <label>Credits</label>
+            </div>
+            <div class="gpa-row">
+                <input type="text" placeholder="e.g. Math 101">
+                <select class="grade">
+                    <option value="4.0">A</option>
+                    <option value="3.7">A-</option>
+                    <option value="3.3">B+</option>
+                    <option value="3.0">B</option>
+                    <option value="2.7">B-</option>
+                    <option value="2.3">C+</option>
+                    <option value="2.0">C</option>
+                    <option value="1.0">D</option>
+                    <option value="0.0">F</option>
+                </select>
+                <input type="number" class="credits" placeholder="Credits" value="3">
+            </div>
+        </div>
+        
+        <button class="btn-add" onclick="addCourse()">+ Add Another Course</button>
+        <button onclick="calcGPA()" style="margin-top:15px;">Calculate GPA Now</button>
+
+        <div id="gpaResults" class="result-box" style="display:none;">
+            <span>Your Semester GPA:</span>
+            <span id="gpaVal" class="res-main"></span>
+            <div id="gpaMsg" style="font-weight:600; margin-top:5px;"></div>
+        </div>
+
+        <div class="content-section">
+            <h2>Academic Success: How to Calculate GPA</h2>
+            <p>At <strong>TrendingDays Tools Hub</strong>, we know that academic performance is a major focus for students worldwide. Whether you are aiming for the Dean's List or applying for scholarships, knowing <strong>how to calculate GPA</strong> (Grade Point Average) is vital. Our tool uses the standard 4.0 scale utilized by most North American colleges and high schools to provide a precise academic snapshot.</p>
+            
+            <h3>1. Understanding the 4.0 GPA Scale</h3>
+            <p>The 4.0 scale is the most common <strong>grade point average formula</strong>. In this system, an 'A' is worth 4 points, a 'B' is 3 points, and so on. Many institutions also use "plus" and "minus" designations (like a B+ or an A-) to provide more granular detail. Our calculator accounts for these variations, assigning the correct numerical value to each letter grade to ensure your cumulative results are mathematically sound and meet university standards.</p>
+
+            <h3>2. The Role of Credit Hours in GPA Calculation</h3>
+            <p>One common point of confusion for students is the "weight" of a course. A 4-credit science lab has a much larger impact on your <strong>semester GPA</strong> than a 1-credit physical education elective. To find your GPA, we multiply the grade value by the number of credits for each course, add those totals together, and divide by the total number of credits attempted. This "weighted average" is the true measure of your academic workload and achievement.</p>
+
+            <h3>3. Strategic Planning for Graduation and Scholarships</h3>
+            <p>Using an <strong>online grade tool</strong> allows you to perform "proactive" planning. By inputting your expected grades before the end of the term, you can see exactly what score you need on your final exams to maintain a specific cumulative average. This is especially important for students maintaining a minimum GPA for athletic eligibility, financial aid, or competitive graduate school applications where every decimal point matters.</p>
+
+            <h3>4. Why Accuracy is Essential for Transcripts</h3>
+            <p>While many universities provide their own portals, they often don't update until the end of the term. Having a <strong>reliable GPA tracker</strong> in your pocket gives you real-time control over your academic data. Our tool uses high-precision floating-point math to ensure that your results match the official transcripts provided by your institution's registrar office.</p>
+
+            <h3>5. Privacy for Your Academic Records</h3>
+            <p>Your grades are your business. Many student portals track your data and sell it to marketers or recruiters. TrendingDays is different. Our <strong>GPA utility</strong> processes your grades entirely <strong>locally in your browser</strong>. Your course names, grades, and totals are never uploaded or stored. We provide the tools you need for academic excellence with the 100% privacy you deserve. Explore our hub for more student-focused digital utilities.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        © 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.
+    </div>
+</footer>
+
+<script>
+    function addCourse() {
+        const div = document.createElement('div');
+        div.className = 'gpa-row';
+        div.innerHTML = `
+            <input type="text" placeholder="Course Name">
+            <select class="grade">
+                <option value="4.0">A</option><option value="3.7">A-</option>
+                <option value="3.3">B+</option><option value="3.0">B</option>
+                <option value="2.7">B-</option><option value="2.3">C+</option>
+                <option value="2.0">C</option><option value="1.0">D</option>
+                <option value="0.0">F</option>
+            </select>
+            <input type="number" class="credits" placeholder="Credits" value="3">
+        `;
+        document.getElementById('courseList').appendChild(div);
+    }
+
+    function calcGPA() {
+        const grades = document.querySelectorAll('.grade');
+        const credits = document.querySelectorAll('.credits');
+        let totalPoints = 0;
+        let totalCredits = 0;
+
+        for (let i = 0; i < grades.length; i++) {
+            const g = parseFloat(grades[i].value);
+            const c = parseFloat(credits[i].value);
+            if (!isNaN(g) && !isNaN(c)) {
+                totalPoints += (g * c);
+                totalCredits += c;
+            }
+        }
+
+        if (totalCredits > 0) {
+            const finalGPA = (totalPoints / totalCredits).toFixed(2);
+            const resultsPanel = document.getElementById('gpaResults');
+            
+            resultsPanel.style.display = 'block';
+            document.getElementById('gpaVal').innerText = finalGPA;
+            document.getElementById('gpaMsg').innerText = finalGPA >= 3.5 ? "Excellent Academic Standing!" : "Keep pushing for your goals!";
+            
+            // Instantly glide viewport down to reveal calculated results block
+            resultsPanel.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+</script>
+</body>
+</html>

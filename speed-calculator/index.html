@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed, Pace & Distance Calculator - Running & Travel Tool - TrendingDays</title>
+    <meta name="description" content="Calculate your average speed, running pace, or travel distance. Perfect for athletes and trip planning. 100% private and precise.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/speed-calculator/">
+    <meta property="og:title" content="Speed, Distance & Time Calculator - Precise Velocity Tracker - TrendingDays">
+    <meta property="og:description" content="Calculate velocity, travel distances, or arrival times instantly using standard and metric scales. 100% private.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Speed, Distance & Time Calculator - Precise Velocity Tracker - TrendingDays">
+    <meta name="twitter:description" content="Calculate velocity, travel distances, or arrival times instantly using standard and metric scales. 100% private.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; position: relative; }
+
+    /* --- 4. FORM ELEMENTS --- */
+    label { display: block; font-weight: 600; margin-top: 20px; color: var(--primary); }
+    input { width: 100%; padding: 12px; border: 2px solid #e0e4f2; border-radius: 8px; margin: 10px 0 20px; font-size: 1.1rem; box-sizing: border-box; transition: 0.3s; }
+    button { background: var(--primary); color: white; padding: 15px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.2rem; font-weight: bold; transition: 0.3s; }
+    button:hover { background: #1e2d6b; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+
+    /* --- 5. RESULTS & CONTENT --- */
+    .result-box { background: #eef2ff; padding: 25px; margin-top: 30px; border-radius: 10px; text-align: center; border: 2px solid #dce2f2; }
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+
+    /* --- MOBILE VIEW HELPER CUE --- */
+    .mobile-view-btn {
+        display: none;
+        background: #28a745;
+        color: white;
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        border-radius: 20px;
+        margin: 5px auto 15px;
+        cursor: pointer;
+        width: fit-content;
+        box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+        animation: subtleBounce 2s infinite;
+    }
+
+    @keyframes subtleBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+    }
+
+    /* --- RESTORED: SPEED CALCULATOR REFINEMENTS --- */
+    select { 
+        width: 100%; 
+        padding: 12px; 
+        border: 2px solid #e0e4f2; 
+        border-radius: 8px; 
+        margin: 5px 0 20px; 
+        font-size: 1.1rem; 
+        box-sizing: border-box; 
+        transition: 0.3s; 
+        background: white;
+    }
+    .res-main {
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin: 10px 0;
+    }
+
+    /* --- 6. FOOTER --- */
+    footer { background: var(--primary); color: white; text-align: center; padding: 15px 20px; margin-top: 40px; }
+    .footer-links { margin-bottom: 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+    .footer-links a { color: white; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        /* Matches age-calculator exactly */
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+
+        /* Speed calculator mobile UI compact scaling rules */
+        .container { padding: 0 10px; margin: 15px auto; }
+        .tool-card { padding: 20px; }
+        label { margin-top: 12px; font-size: 0.95rem; }
+        input, select { padding: 10px; font-size: 1rem; margin: 6px 0 12px; }
+        
+        .mobile-view-btn { display: block; }
+        .result-box { margin-top: 15px; padding: 15px; }
+        .res-main { font-size: 2rem; }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+    <a href="../index.html" style="display: contents;">
+        <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+    </a>
+</div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Speed, Pace & Distance Calculator</h2>
+        <p>Analyze your velocity and timing instantly. Ideal for marathons, road trips, and logistics planning.</p>
+        
+        <div class="input-group">
+            <label>Total Distance:</label>
+            <input type="number" id="dist" placeholder="e.g. 10" oninput="calculateSpeed()">
+            <select id="distUnit" style="margin-top:5px;" onchange="calculateSpeed()">
+                <option value="km">Kilometers (km)</option>
+                <option value="mi">Miles (mi)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label>Time Taken (Minutes):</label>
+            <input type="number" id="time" placeholder="e.g. 60" oninput="calculateSpeed()">
+        </div>
+
+        <div id="mobileScrollCue" class="mobile-view-btn" style="display: none;" onclick="scrollToSpeedResults()">📊 Tap to View Speed & Pace Results</div>
+
+        <div id="speedResults" class="result-box" style="display:none;">
+            <span>Calculated Average Speed:</span>
+            <span id="speedRes" class="res-main"></span>
+            <div id="paceRes" style="font-weight:600; color:#555; background: #fff; padding: 10px; border-radius: 4px; display: inline-block;"></div>
+        </div>
+
+        <div class="content-section">
+            <h2>The Science of Velocity: How to Calculate Average Speed</h2>
+            <p>At <strong>TrendingDays Tools Hub</strong>, we’ve developed this versatile tool to help you navigate the relationship between time, distance, and velocity with absolute precision. Knowing <strong>how to calculate average speed</strong> is a fundamental skill used by millions every day to manage their schedules and hit their fitness goals.</p>
+            
+            <h3>1. The Mathematical Formulas for Speed and Pace</h3>
+            <p>To find your <strong>Average Speed</strong>, we use the classic physics formula: <em>Speed = Distance / Time</em>. To provide the result in hours, our tool converts your minute inputs into decimal hours automatically. Conversely, <strong>Pace</strong> is calculated as <em>Time / Distance</em>. While speed measures how much ground you cover in a set period, pace measures how long it takes to cover a set distance—a metric essential for competitive athletes.</p>
+
+            <h3>2. Distance Units: Land vs. Nautical Miles</h3>
+            <p>While our calculator supports standard Kilometers and Miles, it is important to note the difference in various transportation sectors. A standard land mile (Statute Mile) is 5,280 feet, whereas a Nautical Mile used in sea and air travel is approximately 6,076 feet. Understanding these <strong>measurement standards</strong> is vital for long-distance logistics and ensuring that your speed estimates remain accurate across different modes of transport.</p>
+
+            <h3>3. Strategic Logistics and Travel Time Estimation</h3>
+            <p>By using a <strong>travel time estimator</strong>, you can determine if your current speed is sufficient to reach a destination by a specific deadline. This is crucial for professional logistics and trucking. Knowing your average speed allows for better fuel management and ensures you are following safety protocols by allowing for necessary rest stops during long-haul transits, preventing driver fatigue and mechanical wear.</p>
+
+            <h3>4. Marathon Training and Athletic Benchmarking</h3>
+            <p>Athletes aiming for a "Personal Best" rely on a <strong>running pace calculator</strong> to stay on track. If you know the distance of your race, you can use our tool to figure out exactly how fast you need to move to cross the finish line under your target time. Consistent benchmarking is the only way to ensure steady improvement in endurance sports like cycling, swimming, and long-distance running over a training cycle.</p>
+
+            <h3>5. Secure and Private Performance Data</h3>
+            <p>Most modern fitness trackers upload your location and heart rate data to the cloud. At TrendingDays, we believe your performance data should be private. Our <strong>speed and distance utility</strong> runs entirely via Client-Side JavaScript. Your inputs never leave your browser, providing a high-performance environment that respects your digital anonymity. Explore our hub for more privacy-focused digital tools built for the modern, security-conscious user.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        <p>© 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.</p>
+    </div>
+</footer>
+
+<script>
+    function calculateSpeed() {
+        const d = parseFloat(document.getElementById('dist').value);
+        const t = parseFloat(document.getElementById('time').value);
+        const unit = document.getElementById('distUnit').value;
+        const resDiv = document.getElementById('speedResults');
+        
+        if (d > 0 && t > 0) {
+            const speed = (d / (t / 60)).toFixed(2);
+            const pace = (t / d).toFixed(2);
+            
+            resDiv.style.display = 'block';
+            document.getElementById('speedRes').innerText = speed + ' ' + unit + '/h';
+            document.getElementById('paceRes').innerText = `Estimated Pace: ${pace} min/${unit}`;
+
+            if(window.innerWidth <= 600) {
+                document.getElementById('mobileScrollCue').style.display = 'block';
+            }
+        } else {
+            resDiv.style.display = 'none';
+            document.getElementById('mobileScrollCue').style.display = 'none';
+        }
+    }
+
+    function scrollToSpeedResults() {
+        document.getElementById('speedResults').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>

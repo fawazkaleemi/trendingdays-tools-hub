@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96x96.png">
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+    <link rel="manifest" href="../assets/site.webmanifest">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter - Real-Time Character & Sentence Count - TrendingDays</title>
+    <meta name="description" content="Free online word counter and character count tool. Perfect for essays, blog posts, and social media. 100% private and real-time analysis.">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trendingdays.com/word-counter/">
+    <meta property="og:title" content="Word Counter - Instant Text Analytics Engine - TrendingDays">
+    <meta property="og:description" content="Count words, characters, sentences, and paragraphs in real-time. 100% secure, browser-based text analysis with zero data tracking.">
+    <meta property="og:image" content="https://trendingdays.com/assets/logo.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Word Counter - Instant Text Analytics Engine - TrendingDays">
+    <meta name="twitter:description" content="Count words, characters, sentences, and paragraphs in real-time. 100% secure, browser-based text analysis with zero data tracking.">
+    <meta name="twitter:image" content="https://trendingdays.com/assets/logo.png">
+    
+    <style>
+    /* --- 1. GLOBAL SETTINGS --- */
+    :root {
+        --primary: #2b3e8e;
+        --accent: #ffd700;
+        --bg: linear-gradient(135deg, #e9f0ff, #f9fbff);
+        --text: #333;
+    }
+
+    body { 
+        margin: 0; 
+        font-family: 'Segoe UI', Tahoma, sans-serif; 
+        background: var(--bg); 
+        color: var(--text); 
+        display: flex; 
+        flex-direction: column; 
+        min-height: 100vh; 
+    }
+
+    /* --- 2. THE SLIM HORIZONTAL HEADER --- */
+    header { 
+        background: var(--primary); 
+        color: white; 
+        padding: 12px 0; 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-container { 
+        display: flex; 
+        flex-direction: row; 
+        align-items: center;    
+        justify-content: center; 
+        gap: 20px; 
+        max-width: 1200px; 
+        margin: 0 auto; 
+        padding: 0 20px;
+    }
+
+    .logo-wrapper {
+        width: 160px;  
+        height: 65px;  
+        background-color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        flex-shrink: 0;
+    }
+
+    .logo { 
+        width: 130%;   
+        height: 130%;
+        object-fit: cover; 
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        image-rendering: pixelated;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    .brand-content { text-align: left; }
+
+    .brand-content h1 { 
+        margin: 0; 
+        font-size: 1.7rem; 
+        font-weight: 800; 
+        line-height: 1.1;
+    }
+
+    .brand-tagline { 
+        color: var(--accent); 
+        font-weight: 600; 
+        font-size: 0.95rem; 
+        margin-top: 2px;
+        display: block;
+    }
+
+    /* --- 3. MAIN CONTAINER & TOOL CARD --- */
+    .container { flex: 1; max-width: 980px; margin: 30px auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .tool-card { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); padding: 35px; border: 1px solid #eee; }
+
+    /* --- 4. WORD COUNTER SPECIFIC LAYOUTS --- */
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 15px;
+        border: 2px solid #e0e4f2;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-family: inherit;
+        box-sizing: border-box;
+        resize: vertical;
+        outline: none;
+        transition: 0.3s;
+        margin-top: 15px;
+    }
+    textarea:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 8px rgba(43, 62, 142, 0.15);
+    }
+
+    .counter-stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+    .stat-box {
+        background: #eef2ff;
+        border: 2px solid #dce2f2;
+        border-radius: 10px;
+        padding: 15px;
+        text-align: center;
+        color: var(--primary);
+    }
+
+    .stat-num {
+        display: block;
+        font-size: 2rem;
+        font-weight: 800;
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #555;
+    }
+
+    /* --- 5. CONTENT SECTION --- */
+    .content-section { margin-top: 40px; padding-top: 30px; border-top: 1px solid #eee; line-height: 1.8; color: #444; }
+    .content-section h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; padding-bottom: 5px; margin-bottom: 20px; }
+    .content-section h3 { color: var(--primary); margin-top: 25px; }
+
+    /* --- 6. FOOTER --- */
+    footer { 
+        background: var(--primary); 
+        color: white; 
+        text-align: center; 
+        padding: 15px 20px; 
+        margin-top: 40px; 
+        box-sizing: border-box;
+    }
+    .footer-links { 
+        margin-bottom: 5px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        gap: 15px; 
+        line-height: 1.2;
+    }
+    .footer-links a { 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+    }
+    .copyright { 
+        font-size: 0.85rem; 
+        margin: 0; 
+        padding: 0;
+        line-height: 1.2;
+    }
+
+    /* --- 7. RESPONSIVE --- */
+    @media (max-width: 600px) {
+        .header-container { flex-direction: column; text-align: center; }
+        .logo-wrapper { width: 150px; height: 60px; margin-bottom: 10px; }
+        .brand-content h1 { font-size: 1.3rem; }
+        .counter-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+</style>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo-wrapper">
+            <a href="../index.html" style="display: contents;">
+                <img src="../assets/logo.png" alt="TrendingDays Logo" class="logo">
+            </a>
+        </div>
+        <div class="brand-content">
+            <h1>TrendingDays Tools Hub</h1>
+            <span class="brand-tagline">Fast, Free, and 100% Private Web Utilities.</span>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="tool-card">
+        <h2>Professional Word Counter</h2>
+        <p>Get instant statistics for your writing, including word count, character count, and estimated reading time.</p>
+        
+        <textarea id="textInput" placeholder="Paste your text here..." oninput="countStuff()"></textarea>
+        
+        <div class="counter-stats">
+            <div class="stat-box"><span id="wordCount" class="stat-num">0</span><span class="stat-label">Words</span></div>
+            <div class="stat-box"><span id="charCount" class="stat-num">0</span><span class="stat-label">Characters</span></div>
+            <div class="stat-box"><span id="sentenceCount" class="stat-num">0</span><span class="stat-label">Sentences</span></div>
+            <div class="stat-box"><span id="readingTime" class="stat-num">0</span><span class="stat-label">Min Read</span></div>
+        </div>
+
+        <div class="content-section">
+            <h2>Enhance Your Writing: Why Use an Online Word Count Tool?</h2>
+            <p>Whether you are a student working on a term paper, a professional blogger, or a social media manager, keeping track of your length is critical. At <em>TrendingDays Tools Hub</em>, we’ve designed this <strong>real-time character counter</strong> to give you instant feedback on your writing productivity without the need for heavy software or complex word processors.</p>
+            
+            <h3>1. Meet Strict Word Count Requirements</h3>
+            <p>Academic essays, legal documents, and publishing platforms often have rigid <strong>word count limits</strong>. For example, a college application essay might require exactly 500 words, while a Twitter post is limited by characters. Our tool provides a precise breakdown, ensuring you never exceed these limits or fall short of a mandatory minimum. It counts every word as you type, allowing for seamless editing.</p>
+
+            <h3>2. Optimizing Content for SEO and Social Media</h3>
+            <p>Digital marketers know that <strong>character count with spaces</strong> is a vital metric for meta descriptions and title tags. Google usually truncates titles after 60 characters and descriptions after 160. Using our <strong>writing productivity tool</strong> helps you craft the perfect snippet to increase click-through rates. Additionally, it’s perfect for ensuring your Instagram captions or LinkedIn updates fit perfectly within their respective character boundaries.</p>
+
+            <h3>3. Estimated Reading Time: Why It Matters</h3>
+            <p>In the age of short attention spans, knowing the <strong>estimated reading time</strong> of your article is a huge advantage. Modern readers prefer knowing if a piece will take 2 minutes or 10 minutes to finish. Our algorithm uses the standard adult reading speed of 225 words per minute to give you a reliable estimate, helping you structure your content for maximum engagement and lower bounce rates.</p>
+
+            <h3>4. Analyzing Sentence Structure and Flow</h3>
+            <p>A good piece of writing has a balance of short and long sentences. By tracking your <strong>sentence count</strong>, you can get a bird's-eye view of your writing's rhythm. If your sentence count is very low but your word count is high, you may be writing "run-on" sentences that are difficult for readers to digest. Our tool helps you identify these patterns so you can improve your readability score.</p>
+
+            <h3>5. 100% Privacy and Security</h3>
+            <p>Your creative work is your intellectual property. Many online word counters upload your text to their servers for analysis or data mining. TrendingDays is different. Our <strong>word count utility</strong> processes your text entirely <strong>locally in your browser</strong>. Nothing is ever uploaded, stored, or shared. You can write your most sensitive documents with the peace of mind that your data remains on your machine. Explore our hub for more privacy-focused digital tools.</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="../about/index.html">About Us</a>
+        <a href="../contact/index.html">Contact Us</a>
+        <a href="../legal/privacy.html">Privacy Policy</a>
+        <a href="../legal/terms.html">Terms of Use</a>
+        <a href="../legal/disclaimer.html">Disclaimer</a>
+    </div>
+    <div class="copyright">
+        © 2026 TrendingDays Tools Hub – Fast, Free, and 100% Private Web Utilities.
+    </div>
+</footer>
+<script>
+    function countStuff() {
+        const text = document.getElementById('textInput').value.trim();
+        
+        // Word Count
+        const words = text ? text.split(/\s+/).length : 0;
+        document.getElementById('wordCount').innerText = words;
+        
+        // Character Count
+        document.getElementById('charCount').innerText = text.length;
+        
+        // Sentence Count
+        const sentences = text ? text.split(/[.!?]+/).filter(Boolean).length : 0;
+        document.getElementById('sentenceCount').innerText = sentences;
+        
+        // Reading Time (Avg 225 wpm)
+        const time = Math.ceil(words / 225);
+        document.getElementById('readingTime').innerText = text ? time : 0;
+    }
+</script>
+</body>
+</html>
