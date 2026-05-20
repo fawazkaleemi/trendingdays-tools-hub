@@ -1,0 +1,24 @@
+# TrendingDays Tools Hub
+
+> https://trendingdays.com/
+
+A premium, 100% private library of high-precision, client-side web utilities and calculators. All tools process data locally in-browser with zero server logging or database footprint.
+
+## Core Calculators
+
+- [Age Calculator](https://trendingdays.com/age-calculator/): Precision age tracking in years, months, weeks, and days.
+- [BMI Calculator](https://trendingdays.com/bmi-calculator/): Instantly computes Body Mass Index and healthy weight ranges.
+- [Loan & EMI Calculator](https://trendingdays.com/loan-calculator/): Computes monthly financial loan repayments and interest breakdowns.
+- [Percentage Calculator](https://trendingdays.com/percentage-calculator/): Solves percentage variations, increases, and decreases.
+- [Secure Password Generator](https://trendingdays.com/password-generator/): Generates randomized crypto-secure keys completely offline.
+- [Universal Unit Converter](https://trendingdays.com/unit-converter/): Converts metric and imperial benchmarks seamlessly.
+- [Word & Character Counter](https://trendingdays.com/word-counter/): Real-time analysis of text structural lengths.
+- [Sales Tax Calculator](https://trendingdays.com/sales-tax-calculator/): Computes retail tax overheads and net costs.
+- [Discount Calculator](https://trendingdays.com/discount-calculator/): Tracks markdown clearances and final retail values.
+- [Date Difference Calculator](https://trendingdays.com/date-calculator/): Counts exact durations between calendar points.
+- [Speed & Pace Calculator](https://trendingdays.com/speed-calculator/): Analyzes velocity data and athletic running splits.
+- [Margin & Markup Calculator](https://trendingdays.com/margin-calculator/): Essential business analytics for wholesale pricing models.
+- [Simple Interest Calculator](https://trendingdays.com/simple-interest/): Measures basic capital yield timelines over fixed rates.
+- [GPA Calculator](https://trendingdays.com/gpa-calculator/): Aggregates academic grades across weighted scales.
+- [Random Generator & Picker](https://trendingdays.com/random-generator/): High-integrity localized randomized lists and dice rolls.
+- [Advanced Scientific Calculator](https://trendingdays.com/scientific-calculator/): Core trigonometric, algorithmic, and engineering math equations.
