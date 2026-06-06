@@ -187,6 +187,59 @@
         .result-box { margin-top: 15px; padding: 15px; }
         .res-main { font-size: 2rem; }
     }
+
+    /* --- TRENDINGDAYS HUB INTERNAL NAVIGATION --- */
+    .td-internal-nav {
+        margin: 50px auto 30px auto;
+        padding: 25px 15px;
+        max-width: 900px;
+        border-top: 1px dashed #d1d5db;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+    .td-internal-nav h3 {
+        font-size: 1.1rem;
+        color: var(--primary);
+        margin-bottom: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .td-grid-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    .td-btn-link {
+        display: inline-block;
+        padding: 10px 18px;
+        background-color: white;
+        color: var(--primary);
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 2px solid #e0e4f2;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        transition: 0.3s;
+    }
+    .td-btn-link.td-home-accent {
+        background-color: #f0f7ff;
+        border-color: #2b3e8e;
+    }
+    .td-btn-link:hover {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 600px) {
+        .td-btn-link { width: calc(50% - 6px); box-sizing: border-box; font-size: 0.85rem; padding: 10px 5px; text-align: center; }
+        .td-btn-link.td-home-accent { width: 100%; }
+    }
+
 </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5208443573852979"
@@ -313,6 +366,19 @@
         </div>
 
     </section>
+</div>
+
+    <div class="td-internal-nav">
+    <h3>Explore More Free Privacy-First Utilities</h3>
+    <div class="td-grid-wrapper">
+        <a href="../index.html" class="td-btn-link td-home-accent">🎛️ Browse All Utilities</a>
+        <a href="../loan-calculator/index.html" class="td-btn-link">💰 Loan & EMI</a>
+        <a href="../gpa-calculator/index.html" class="td-btn-link">🎓 GPA Planner</a>
+        <a href="../age-calculator/index.html" class="td-btn-link">⏳ Age Tracker</a>
+        <a href="../bmi-calculator/index.html" class="td-btn-link">⚖️ BMI Health</a>
+        <a href="../password-generator/index.html" class="td-btn-link">🔐 Password Gen</a>
+        <a href="../unit-converter/index.html" class="td-btn-link">🔄 Unit Converter</a>
+    </div>
 </div>
 
 <footer>
